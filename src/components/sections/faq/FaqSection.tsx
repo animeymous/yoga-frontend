@@ -23,7 +23,7 @@ const faqs = [
 
 export default function FaqSection() {
   return (
-    <section className="faq-section py-16 bg-gray-100">
+    <section className="faq-section py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
         <Accordion type="multiple" className="w-full">
