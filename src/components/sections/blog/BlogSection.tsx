@@ -47,7 +47,7 @@ const blogPosts = [
 
 export default function BlogSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-100">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold">Blog</h2>
         <p className="mt-4 text-muted-foreground">
