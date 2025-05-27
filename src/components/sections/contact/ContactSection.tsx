@@ -97,103 +97,135 @@ export default function ContactSection() {
         <section className="contact-us-form-section pb-16 bg-gray-100">
           <div className="contact-us-form-section-parent-div mx-10">
             <div className="contact-us-form-area grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="contact-us-form-wrap">
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    {/* First Row: First Name & Last Name */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="firstname"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>First Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="John" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="lastname"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Last Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Doe" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+            <div className="contact-us-form-wrap bg-white p-8 shadow-xl rounded-2xl">
+  <Form {...form}>
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      
+      {/* Row 1: First Name & Last Name */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="firstname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700">First Name</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="John"
+                  {...field}
+                  className="rounded-xl border-gray-300 focus:ring-primary focus:border-primary"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="lastname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700">Last Name</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Doe"
+                  {...field}
+                  className="rounded-xl border-gray-300 focus:ring-primary focus:border-primary"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
 
-                    {/* Second Row: Email & Phone */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                              <Input placeholder="email@example.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Phone</FormLabel>
-                            <FormControl>
-                              <Input placeholder="+1 234 567 890" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+      {/* Row 2: Email & Phone */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700">Email</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="email@example.com"
+                  {...field}
+                  className="rounded-xl border-gray-300 focus:ring-primary focus:border-primary"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700">Phone</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="+1 234 567 890"
+                  {...field}
+                  className="rounded-xl border-gray-300 focus:ring-primary focus:border-primary"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
 
-                    {/* Third Row: Subject */}
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Subject" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+      {/* Row 3: Subject */}
+      <FormField
+        control={form.control}
+        name="subject"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="text-sm font-medium text-gray-700">Subject</FormLabel>
+            <FormControl>
+              <Input
+                placeholder="Subject"
+                {...field}
+                className="rounded-xl border-gray-300 focus:ring-primary focus:border-primary"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
-                    {/* Fourth Row: Message */}
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your message here..." {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+      {/* Row 4: Message */}
+      <FormField
+        control={form.control}
+        name="message"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="text-sm font-medium text-gray-700">Message</FormLabel>
+            <FormControl>
+              <textarea
+                placeholder="Your message here..."
+                {...field}
+                rows={5}
+                className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
-                    <Button type="submit">Submit</Button>
-                  </form>
-                </Form>
-              </div>
+      <Button
+        type="submit"
+        className="w-full md:w-auto bg-primary text-white hover:bg-primary/90 transition-all duration-300 rounded-xl px-6 py-3"
+      >
+        Submit
+      </Button>
+    </form>
+  </Form>
+</div>
+
               <div className="contact-us-info-wrap">
                 <div className="contact-us-info-area relative w-full max-w-[100vw] sm:max-w-[96vw] md:max-w-[696px] lg:max-w-[456px] xl:max-w-[100vw] h-[70vh] bg-no-repeat bg-cover bg-center mx-auto"
                     style={{ backgroundImage: "url('/images/contact3.jpg')" }}>
