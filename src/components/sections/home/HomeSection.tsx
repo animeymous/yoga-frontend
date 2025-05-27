@@ -70,7 +70,7 @@ export default function HomeSection() {
       </div>
 
       {/* Featured Classes */}
-      <div className="py-16 bg-white px-6">
+      <div className="py-16 pt-0 bg-white px-6">
         <div className="text-center mb-12">
           <h3 className="text-3xl font-semibold">Featured Classes</h3>
           <p className="mt-2 text-gray-600">Find the class that fits your lifestyle.</p>
