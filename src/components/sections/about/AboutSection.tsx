@@ -1,4 +1,5 @@
 import TopSection from "../../common/top-section/TopSection";
+import FaqSection from "../faq/FaqSection";
 
 export default function AboutSection() {
   return (
@@ -34,6 +35,9 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
+    </section>
+    <section className="bg-gray-200">
+      <FaqSection />
     </section>
     </>
   );
