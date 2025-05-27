@@ -70,7 +70,7 @@ export default function ContactSection() {
   
     return (
       <>
-        <section className="breadcrumb-section w-full h-[40vh]">
+        <section className="breadcrumb-section w-full h-[40vh] bg-gray-100">
           <div
             className="relative w-full h-full bg-no-repeat bg-cover bg-center"
             style={{ backgroundImage: "url('/images/contact1.jpg')" }}
@@ -83,7 +83,7 @@ export default function ContactSection() {
             </div>
           </div>
         </section>
-        <section className="contact-location-section py-16">
+        <section className="contact-location-section py-16 bg-gray-100">
           <div className="contact-location-section-parent-div mx-10">
             <div className="section-title-block text-center mb-10">
               <div className="section-subtitle">Our Expertise</div>
@@ -131,7 +131,7 @@ export default function ContactSection() {
             </div>
           </div>
         </section>
-        <section className="contact-us-form-section pb-16">
+        <section className="contact-us-form-section pb-16 bg-gray-100">
           <div className="contact-us-form-section-parent-div mx-10">
             <div className="contact-us-form-area grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="contact-us-form-wrap">
@@ -255,7 +255,7 @@ export default function ContactSection() {
             </div>
           </div>
         </section>
-        <section className="contact-us-faq-section">
+        <section className="contact-us-faq-section bg-gray-200">
           <FaqSection />
         </section>
       </>
