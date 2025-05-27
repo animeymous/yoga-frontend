@@ -26,24 +26,29 @@ import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
   firstname: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "First name must be at least 2 characters long.",
   }),
   lastname: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Last name must be at least 2 characters long.",
   }),
-  email: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  email: z.string().email({
+    message: "Please enter a valid email address.",
   }),
-  phone: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  phone: z
+    .string()
+    .min(7, { message: "Phone number must be at least 7 digits." })
+    .max(15, { message: "Phone number must be less than 15 digits." })
+    .regex(/^\+?[0-9\s\-()]+$/, {
+      message: "Phone number contains invalid characters.",
+    }),
+  subject: z.string().min(3, {
+    message: "Subject must be at least 3 characters long.",
   }),
-  subject: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters long.",
   }),
-  message: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
+});
+
 
 export default function ContactSection() {
     const form = useForm({
