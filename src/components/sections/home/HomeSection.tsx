@@ -37,6 +37,38 @@ export default function HomeSection() {
         </p>
       </div>
 
+      {/* Benefits Section */}
+      <div className="py-16 bg-white px-6">
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-semibold">Benefits of Practicing Yoga</h3>
+        </div>
+        <div className="grid gap-10 md:grid-cols-3 max-w-6xl mx-auto text-left">
+          {[
+            {
+              title: 'Improve Flexibility',
+              desc: 'Regular yoga helps increase range of motion, reduce stiffness, and support joint health.',
+              icon: '🧘‍♀️',
+            },
+            {
+              title: 'Reduce Stress & Anxiety',
+              desc: 'Breathing techniques and mindfulness reduce stress levels and improve mental clarity.',
+              icon: '🧠',
+            },
+            {
+              title: 'Boost Strength & Posture',
+              desc: 'Strengthen core muscles and correct postural habits for a healthier body.',
+              icon: '💪',
+            },
+          ].map((b, i) => (
+            <div key={i} className="bg-stone-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+              <div className="text-4xl mb-4">{b.icon}</div>
+              <h4 className="text-xl font-semibold mb-2">{b.title}</h4>
+              <p className="text-gray-600">{b.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Featured Classes */}
       <div className="py-16 bg-white px-6">
         <div className="text-center mb-12">
@@ -50,7 +82,7 @@ export default function HomeSection() {
             { title: 'Yin & Restore', desc: 'Slow-paced deep stretching and relaxation.', img: '/images/home3.jpg' },
           ].map((cls, i) => (
             <div key={i} className="bg-stone-100 rounded-lg overflow-hidden shadow-md">
-              <img src={cls.img} alt={cls.title} className="w-full h-120 object-cover" />
+              <img src={cls.img} alt={cls.title} className="w-full h-100 object-cover" />
               <div className="p-6">
                 <h4 className="text-xl font-semibold mb-2">{cls.title}</h4>
                 <p className="text-gray-600 text-sm">{cls.desc}</p>
@@ -60,25 +92,39 @@ export default function HomeSection() {
         </div>
       </div>
 
+      {/* Instructor Snippet */}
+      <div className="py-16 text-center bg-stone-200 px-6">
+        <h3 className="text-3xl font-bold mb-6">Meet Our Instructors</h3>
+        <p className="max-w-xl mx-auto text-gray-600 mb-10">
+          Our certified teachers bring years of experience and compassion to every class, guiding you with care and knowledge.
+        </p>
+        <Link
+          href="/team"
+          className="inline-block text-primary font-semibold hover:underline text-lg"
+        >
+          Meet the Team →
+        </Link>
+      </div>
+
       {/* Testimonials */}
-      <div className="py-16 bg-stone-200 px-6 text-center">
+      <div className="py-16 bg-white px-6 text-center">
         <h3 className="text-3xl font-semibold mb-10">What Our Students Say</h3>
         <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto text-left">
           {[
             {
-              quote: "Yoga Bliss has transformed how I manage stress and live mindfully. Highly recommend!",
+              quote: "Ashu Yoga has helped me reconnect with myself and grow mentally and physically.",
               name: 'Anjali R.',
             },
             {
-              quote: "Their instructors are truly world-class and the community is warm and welcoming.",
+              quote: "I feel more balanced and focused. The teachers truly care about your journey.",
               name: 'Michael D.',
             },
             {
-              quote: "Each session is a mini-retreat. It’s the best part of my week!",
+              quote: "Every session feels like coming home to peace. Highly recommend!",
               name: 'Sophie K.',
             },
           ].map((t, i) => (
-            <div key={i} className="bg-white p-6 rounded-lg shadow">
+            <div key={i} className="bg-stone-100 p-6 rounded-lg shadow">
               <p className="text-gray-700 italic">“{t.quote}”</p>
               <p className="mt-4 font-medium text-primary">{t.name}</p>
             </div>
@@ -86,11 +132,30 @@ export default function HomeSection() {
         </div>
       </div>
 
+      {/* FAQ Snippet */}
+      <div className="py-16 bg-stone-100 text-center px-6">
+        <h3 className="text-3xl font-semibold mb-6">FAQs</h3>
+        <div className="max-w-3xl mx-auto text-left space-y-6">
+          <div>
+            <h4 className="text-lg font-medium text-primary">Do I need experience to join?</h4>
+            <p className="text-gray-600">Not at all! We welcome all levels, from complete beginners to experienced yogis.</p>
+          </div>
+          <div>
+            <h4 className="text-lg font-medium text-primary">What should I bring?</h4>
+            <p className="text-gray-600">A yoga mat, water bottle, and comfortable clothing. Mats are also available in the studio.</p>
+          </div>
+          <div>
+            <h4 className="text-lg font-medium text-primary">Are online classes available?</h4>
+            <p className="text-gray-600">Yes, many classes are available both in-studio and online for flexibility.</p>
+          </div>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="py-20 bg-gray-900 text-white text-center px-6">
         <h3 className="text-3xl font-bold">Ready to begin your yoga journey?</h3>
         <p className="mt-4 text-lg max-w-xl mx-auto">
-          Sign up for a free trial class and discover the Yoga Bliss experience today.
+          Sign up for a free trial class and discover the Ashu Yoga experience today.
         </p>
         <Link
           href="/contact"
