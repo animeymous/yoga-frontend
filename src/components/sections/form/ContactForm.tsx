@@ -149,7 +149,7 @@ export default function ContactForm() {
             )}
           />
 
-          <Button type="submit" className="w-full md:w-auto bg-primary text-white hover:bg-primary/90 rounded-xl px-6 py-3">
+          <Button type="submit" className="w-full md:w-auto bg-gray-900 text-white hover:bg-primary/90 rounded-xl px-6 py-3">
             Submit
           </Button>
         </form>
