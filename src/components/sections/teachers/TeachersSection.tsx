@@ -52,7 +52,7 @@ export default function TeachersSection() {
   return (
     <>
       <TopSection
-        url="/images/teacher4.jpg"
+        url="/images/pricing2.jpg"
         heading1="Meet Our Teachers"
         heading2="Certified, experienced, and passionate guides."
       />
