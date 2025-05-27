@@ -1,13 +1,4 @@
 'use client'
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -24,6 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import FaqSection from "../faq/FaqSection"
+import { LocationCard } from "../../common/location-card/LocationCardSection"
 
 const formSchema = z.object({
   firstname: z.string().min(2, {
@@ -83,51 +75,22 @@ export default function ContactSection() {
             </div>
           </div>
         </section>
-        <section className="contact-location-section py-16 bg-gray-100">
+        <section className="contact-location-section py-20 bg-gray-100">
           <div className="contact-location-section-parent-div mx-10">
-            <div className="section-title-block text-center mb-10">
-              <div className="section-subtitle">Our Expertise</div>
-              <h2 className="section-title">
-                A comfortable stage for mindful living
-              </h2>
-            </div>
+          <div className="text-center mb-20">
+            <p className="text-primary uppercase tracking-widest text-sm font-medium mb-2">
+              Our Expertise
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+              A Comfortable Stage for Mindful Living
+            </h2>
+            <div className="w-16 h-1 bg-primary mt-4 mx-auto rounded-full" />
+          </div>
+
             <div className="contact-location-wrap grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Card Title</CardTitle>
-                  <CardDescription>Card Description</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Card Content</p>
-                </CardContent>
-                <CardFooter>
-                  <p>Card Footer</p>
-                </CardFooter>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Card Title</CardTitle>
-                  <CardDescription>Card Description</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Card Content</p>
-                </CardContent>
-                <CardFooter>
-                  <p>Card Footer</p>
-                </CardFooter>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Card Title</CardTitle>
-                  <CardDescription>Card Description</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Card Content</p>
-                </CardContent>
-                <CardFooter>
-                  <p>Card Footer</p>
-                </CardFooter>
-              </Card>
+              <LocationCard locationName={"Vinayasa yoga school"} address={"Rishikesh, Uttarakhand"} />
+              <LocationCard locationName={"World peace yoga school"} address={"Rishikesh, Uttarakhand"} />
+              <LocationCard locationName={"Ashu yoga school"} address={"Rishikesh, Uttarakhand"} />
             </div>
           </div>
         </section>
