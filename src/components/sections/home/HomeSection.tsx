@@ -132,6 +132,99 @@ export default function HomeSection() {
         </div>
       </div>
 
+      {/* Yoga Philosophy */}
+      <div className="py-16 bg-white px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-3xl font-semibold mb-6">Our Yoga Philosophy</h3>
+          <p className="text-gray-600 text-lg">
+            At Ashu Yoga, we believe that yoga is more than movement — it is a path to awareness, balance, and transformation. 
+            Our practice is rooted in authenticity, mindfulness, and deep respect for ancient traditions.
+          </p>
+        </div>
+      </div>
+
+      {/* Upcoming Events */}
+      <div className="py-16 bg-stone-200 px-6 text-center">
+        <h3 className="text-3xl font-semibold mb-6">Upcoming Events & Retreats</h3>
+        <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+          {[
+            {
+              title: 'Sunrise Beach Yoga',
+              date: 'June 15, 2025',
+              desc: 'Join us for a peaceful morning session by the ocean.',
+            },
+            {
+              title: 'Weekend Wellness Retreat',
+              date: 'July 20–22, 2025',
+              desc: 'Disconnect to reconnect — a 3-day immersive experience in nature.',
+            },
+            {
+              title: 'Full Moon Meditation',
+              date: 'August 1, 2025',
+              desc: 'A moonlit group practice under the stars, in harmony with nature’s cycles.',
+            },
+          ].map((event, i) => (
+            <div key={i} className="bg-white p-6 rounded-lg shadow-md text-left">
+              <h4 className="text-xl font-semibold">{event.title}</h4>
+              <p className="text-sm text-gray-500 mb-2">{event.date}</p>
+              <p className="text-gray-600">{event.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Newsletter Signup */}
+      <div className="py-16 bg-white px-6 text-center">
+        <div className="max-w-xl mx-auto">
+          <h3 className="text-3xl font-semibold mb-4">Stay Connected</h3>
+          <p className="text-gray-600 mb-6">Sign up for our newsletter to receive yoga tips, upcoming events, and special offers.</p>
+          <form className="flex flex-col sm:flex-row gap-4 justify-center">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            <button
+              type="submit"
+              className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Instagram Gallery Preview */}
+      <div className="py-16 bg-stone-100 px-6 text-center">
+        <h3 className="text-3xl font-semibold mb-6">Follow Us on Instagram</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i}>
+              <img
+                src={`/images/instagram${i}.jpg`}
+                alt={`Instagram photo ${i}`}
+                className="rounded-lg w-full h-40 object-cover shadow-sm hover:shadow-lg transition"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Our Partners */}
+      <div className="py-16 bg-white px-6 text-center">
+        <h3 className="text-3xl font-semibold mb-6">Our Trusted Partners</h3>
+        <div className="flex flex-wrap justify-center gap-8">
+          {['lululemon', 'manduka', 'calm', 'headspace'].map((brand, i) => (
+            <img
+              key={i}
+              src={`/images/partner${i+1}.jpg`}
+              alt={brand}
+              className="h-40 opacity-70 hover:opacity-100 transition"
+            />
+          ))}
+        </div>
+      </div>
+
       {/* FAQ Snippet */}
       <div className="py-16 bg-stone-100 text-center px-6">
         <h3 className="text-3xl font-semibold mb-6">FAQs</h3>
