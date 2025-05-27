@@ -1,4 +1,4 @@
-import TopSection from "../top-section/TopSection";
+import TopSection from "../../common/top-section/TopSection";
 
 export default function AboutSection() {
   return (

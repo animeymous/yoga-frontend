@@ -4,7 +4,7 @@ import FaqSection from "../faq/FaqSection"
 import { LocationCard } from "../../common/location-card/LocationCardSection"
 import ContactUsInfo from "@/components/common/contact-us-info/ContactUsInfo"
 import ContactForm from "../form/ContactForm"
-import TopSection from "../top-section/TopSection"
+import TopSection from "../../common/top-section/TopSection"
 
 export default function ContactSection() {
 
