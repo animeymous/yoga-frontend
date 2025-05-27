@@ -47,7 +47,7 @@ export default function Navbar() {
             <NavigationMenuList className="flex gap-4">
               {navLinks.map(({ label, href }) => (
                 <NavigationMenuItem key={href}>
-                  <Link href={href}  passHref>
+                  <Link href={href} passHref legacyBehavior>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       {label}
                     </NavigationMenuLink>
@@ -80,7 +80,6 @@ export default function Navbar() {
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
-
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-2 flex flex-col gap-3 px-2">
@@ -90,7 +89,7 @@ export default function Navbar() {
               href={href}
               className="text-gray-700 hover:text-primary"
               onClick={() => setIsOpen(false)}
-            >
+              legacyBehavior>
               {label}
             </Link>
           ))}
@@ -101,7 +100,7 @@ export default function Navbar() {
               href={href}
               className="text-gray-700 hover:text-primary"
               onClick={() => setIsOpen(false)}
-            >
+              legacyBehavior>
               {title}
             </Link>
           ))}
