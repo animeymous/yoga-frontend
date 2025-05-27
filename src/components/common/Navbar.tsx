@@ -87,9 +87,9 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className="text-gray-700 hover:text-primary"
               onClick={() => setIsOpen(false)}
-              legacyBehavior>
+              className="text-gray-700 hover:text-primary"
+            >
               {label}
             </Link>
           ))}
@@ -98,9 +98,9 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className="text-gray-700 hover:text-primary"
               onClick={() => setIsOpen(false)}
-              legacyBehavior>
+              className="text-gray-700 hover:text-primary"
+            >
               {title}
             </Link>
           ))}
