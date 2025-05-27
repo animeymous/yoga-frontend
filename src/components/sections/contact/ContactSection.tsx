@@ -10,7 +10,7 @@ import {
 export default function ContactSection() {
     return (
       <>
-        <section className="w-full h-[40vh]">
+        <section className="breadcrumb-section w-full h-[40vh]">
           <div className="relative w-full h-full bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('/images/contact1.jpg')" }}>
             {/* Overlay div with flexbox to center content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
@@ -80,8 +80,6 @@ export default function ContactSection() {
             </div>
           </div>
         </section>
-
-
       </>
     );
   }
