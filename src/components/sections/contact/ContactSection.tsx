@@ -1,19 +1,5 @@
 'use client'
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
- 
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+
 import FaqSection from "../faq/FaqSection"
 import { LocationCard } from "../../common/location-card/LocationCardSection"
 import ContactUsInfo from "@/components/common/contact-us-info/ContactUsInfo"
@@ -24,19 +10,23 @@ export default function ContactSection() {
   
     return (
       <>
-        <section className="breadcrumb-section w-full h-[40vh] bg-gray-100">
-          <div
-            className="relative w-full h-full bg-no-repeat bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/contact1.jpg')" }}
-          >
-            {/* Overlay div with flexbox to center content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
-              <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-              <hr className="w-24 border-white border-t-2 mb-2" />
-              <p className="text-lg">We would love to hear from you!</p>
-            </div>
-          </div>
-        </section>
+<section className="relative w-full h-[96vh] bg-gray-900">
+  <div
+    className="absolute inset-0 bg-center bg-cover filter brightness-75"
+    style={{ backgroundImage: "url('/images/contact5.jpg')" }}
+    aria-hidden="true"
+  />
+  <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center text-white max-w-4xl mx-auto">
+    <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
+      Get in Touch
+    </h1>
+    <hr className="w-20 border-t-4 border-primary mb-6 opacity-80" />
+    <p className="text-lg md:text-xl max-w-xl drop-shadow-md">
+      We would love to hear from you! Reach out for any questions, feedback, or collaborations.
+    </p>
+  </div>
+</section>
+
         <section className="contact-location-section py-20 bg-gray-100">
           <div className="contact-location-section-parent-div mx-10">
           <div className="text-center mb-20">
