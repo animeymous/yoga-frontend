@@ -23,6 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import FaqSection from "../faq/FaqSection"
 
 const formSchema = z.object({
   firstname: z.string().min(2, {
@@ -253,6 +254,9 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
+        </section>
+        <section className="contact-us-faq-section">
+          <FaqSection />
         </section>
       </>
     );
