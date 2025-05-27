@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardContent,
@@ -6,8 +8,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { useForm } from "react-hook-form";
 
 export default function ContactSection() {
+    const { register, handleSubmit } = useForm({
+      defaultValues: {
+        firstName: "bill",
+        lastName: "luo",
+        email: "test@test.com",
+        isDeveloper: true
+      }
+    });
+
+    const onSubmit = (data: any) => {
+      alert(JSON.stringify(data));
+    };
     return (
       <>
         <section className="breadcrumb-section w-full h-[40vh]">
@@ -74,7 +89,27 @@ export default function ContactSection() {
         <section className="contact-us-form-section pb-16">
           <div className="contact-us-form-section-parent-div mx-10">
             <div className="contact-us-form-area grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="contact-us-form-wrap">this will have form</div>
+              <div className="contact-us-form-wrap bg-black">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor="firstName">First Name</label>
+                <input placeholder="bill" {...register("firstName")} />
+
+                <label htmlFor="lastName">Last Name</label>
+                <input placeholder="luo" {...register("lastName")} />
+
+                <label htmlFor="email">Email</label>
+                <input
+                  placeholder="bluebill1049@hotmail.com"
+                  type="email"
+                  {...register("email")}
+                />
+
+                <label>Is developer?</label>
+                <input type="checkbox" {...register("isDeveloper")} />
+
+                <input type="submit" />
+              </form>
+              </div>
               <div className="contact-us-info-wrap">
                 <div className="contact-us-info-area relative w-full max-w-[100vw] sm:max-w-[96vw] md:max-w-[696px] lg:max-w-[456px] xl:max-w-[100vw] h-[70vh] bg-no-repeat bg-cover bg-center mx-auto"
                     style={{ backgroundImage: "url('/images/contact3.jpg')" }}>
