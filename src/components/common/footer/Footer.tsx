@@ -56,7 +56,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} Wellness Haven. All rights reserved.
+        © {new Date().getFullYear()} Ashu Yoga. All rights reserved.
       </div>
     </footer>
   );
