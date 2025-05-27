@@ -72,28 +72,31 @@ export default function ClassesSection() {
         heading2="Find the right practice for your body and soul."
       />
 
-      <section className="py-20 bg-white px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {classes.map((cls, i) => (
-            <div
-              key={i}
-              className="bg-stone-100 rounded-xl shadow hover:shadow-md transition overflow-hidden"
-            >
-              <img
-                src={cls.image}
-                alt={cls.title}
-                className="w-full h-100 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-primary">
-                  {cls.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{cls.desc}</p>
+      {/* Full-width bg-white wrapper */}
+      <div className="bg-gray-100">
+        <section className="py-20 px-4 md:px-6 max-w-7xl mx-auto">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {classes.map((cls, i) => (
+              <div
+                key={i}
+                className="bg-stone-100 rounded-xl shadow hover:shadow-md transition overflow-hidden"
+              >
+                <img
+                  src={cls.image}
+                  alt={cls.title}
+                  className="w-full h-100 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 text-primary">
+                    {cls.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{cls.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      </div>
     </>
   );
 }
