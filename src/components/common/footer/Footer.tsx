@@ -10,7 +10,7 @@ export default function Footer() {
         
         {/* Logo & Description */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">Wellness Haven</h2>
+          <h2 className="text-2xl font-bold mb-4">Ashu Yoga</h2>
           <p className="text-sm">
             Your destination for peace, mindfulness, and holistic living. Stay grounded. Stay connected.
           </p>
