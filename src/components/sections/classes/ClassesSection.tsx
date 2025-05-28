@@ -1,3 +1,5 @@
+'use client';
+
 import TopSection from '@/components/common/top-section/TopSection';
 
 const classes = [
@@ -72,19 +74,53 @@ export default function ClassesSection() {
         heading2="Find the right practice for your body and soul."
       />
 
-      {/* Full-width bg-white wrapper */}
-      <div className="bg-gray-100">
-        <section className="py-20 px-4 md:px-6 max-w-7xl mx-auto">
+      {/* Main Content Area for Classes */}
+      <main className='bg-gray-100'>
+        {/* About Our Classes Section */}
+        <section
+          aria-labelledby="about-classes-title"
+          className="bg-white py-16 px-6 max-w-4xl mx-auto text-center"
+        >
+          <h2
+            id="about-classes-title"
+            className="text-3xl font-bold mb-4 text-gray-900"
+          >
+            About Our Yoga Classes
+          </h2>
+          <p className="text-gray-700 text-lg max-w-3xl mx-auto leading-relaxed">
+            Our diverse selection of yoga classes at Ashu Yoga Studio is designed to meet you wherever you are on your wellness journey.
+            From energizing flows and strength-building sequences to deep relaxation and meditation, our classes accommodate all ages,
+            abilities, and experience levels. Each session is thoughtfully curated to support physical vitality, mental calmness,
+            and spiritual growth — creating a balanced practice that nurtures your whole self.
+          </p>
+          <p className="text-gray-700 text-lg max-w-3xl mx-auto mt-4 leading-relaxed">
+            Whether you're looking to build strength, increase flexibility, relieve stress, or simply find a moment of mindful peace,
+            you’ll find a welcoming class tailored for your goals and lifestyle.
+          </p>
+        </section>
+
+        {/* Yoga Class Listings */}
+        <section
+          aria-labelledby="class-grid-title"
+          className="bg-gray-100 py-20 px-4 md:px-6 max-w-7xl mx-auto"
+        >
+          <h2 id="class-grid-title" className="sr-only">
+            Yoga Class Options
+          </h2>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {classes.map((cls, i) => (
-              <div
+              <article
                 key={i}
                 className="bg-stone-100 rounded-xl shadow hover:shadow-md transition overflow-hidden"
+                role="region"
+                aria-label={cls.title}
               >
                 <img
                   src={cls.image}
-                  alt={cls.title}
+                  alt={`Illustration for ${cls.title}`}
                   className="w-full h-100 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-primary">
@@ -92,11 +128,11 @@ export default function ClassesSection() {
                   </h3>
                   <p className="text-gray-600 text-sm">{cls.desc}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }
