@@ -14,6 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // Define your links
 const navLinks = [
@@ -37,8 +38,17 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-primary">
-          Ashu Yoga
+        <Link href="/" className="flex items-center gap-2">
+          {/* Logo */}
+          <Image
+            src="/images/yogabrandlogo1.png"
+            alt="Ashu Yoga Logo"
+            width={40}
+            height={40}
+            className="object-contain"
+          />
+          {/* Brand Name */}
+          <span className="text-xl font-bold text-primary">Ashu Yoga</span>
         </Link>
 
         {/* Desktop Navigation Menu */}
