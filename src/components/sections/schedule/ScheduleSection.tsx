@@ -24,30 +24,33 @@ export default function ScheduleSection() {
 
       {/* FULL WIDTH BACKGROUND WRAPPER */}
       <div className="bg-gray-100">
-        <section className="py-20 px-6 max-w-5xl mx-auto">
-          <div className="overflow-x-auto rounded-lg shadow">
-            <table className="w-full border text-left text-sm min-w-[600px]">
-              <thead className="bg-stone-200 text-gray-700">
-                <tr>
-                  <th className="p-3">Day</th>
-                  <th className="p-3">Time</th>
-                  <th className="p-3">Class</th>
-                  <th className="p-3">Instructor</th>
-                </tr>
-              </thead>
-              <tbody>
-                {scheduleData.map(([day, time, cls, instructor], i) => (
-                  <tr key={i} className="border-b hover:bg-stone-50">
-                    <td className="p-3 font-medium whitespace-nowrap">{day}</td>
-                    <td className="p-3 whitespace-nowrap">{time}</td>
-                    <td className="p-3">{cls}</td>
-                    <td className="p-3">{instructor}</td>
+        <main>
+          <section className="py-20 px-6 max-w-5xl mx-auto">
+            <div className="overflow-x-auto rounded-lg shadow">
+              <table className="w-full border text-left text-sm min-w-[600px]">
+                <caption className="sr-only">Weekly Yoga Class Schedule</caption>
+                <thead className="bg-stone-200 text-gray-700">
+                  <tr>
+                    <th className="p-3">Day</th>
+                    <th className="p-3">Time</th>
+                    <th className="p-3">Class</th>
+                    <th className="p-3">Instructor</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+                </thead>
+                <tbody>
+                  {scheduleData.map(([day, time, cls, instructor], i) => (
+                    <tr key={i} className="border-b hover:bg-stone-50">
+                      <td className="p-3 font-medium whitespace-nowrap">{day}</td>
+                      <td className="p-3 whitespace-nowrap">{time}</td>
+                      <td className="p-3">{cls}</td>
+                      <td className="p-3">{instructor}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
       </div>
     </>
   );
