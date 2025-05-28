@@ -1,6 +1,7 @@
 'use client';
 
 import TopSection from '@/components/common/top-section/TopSection';
+import { motion } from 'framer-motion';
 
 const classes = [
   {
@@ -65,6 +66,24 @@ const classes = [
   },
 ];
 
+const cardVariants = {
+  rest: {
+    scale: 1,
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+  hover: {
+    scale: 1.05,
+    boxShadow: "0 10px 15px rgba(0, 0, 0, 0.25)",
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+};
+
+const titleVariants = {
+  rest: { color: "#2563eb" /* Tailwind primary blue-600 */, transition: { duration: 0.3 } },
+  hover: { color: "#1e40af" /* Tailwind primary blue-800 */, transition: { duration: 0.3 } },
+};
+
 export default function ClassesSection() {
   return (
     <>
@@ -74,9 +93,7 @@ export default function ClassesSection() {
         heading2="Find the right practice for your body and soul."
       />
 
-      {/* Main Content Area for Classes */}
-      <main className='bg-gray-100'>
-        {/* About Our Classes Section */}
+      <main className="bg-gray-100">
         <section
           aria-labelledby="about-classes-title"
           className="bg-white py-16 px-6 max-w-4xl mx-auto text-center"
@@ -99,7 +116,6 @@ export default function ClassesSection() {
           </p>
         </section>
 
-        {/* Yoga Class Listings */}
         <section
           aria-labelledby="class-grid-title"
           className="bg-gray-100 py-20 px-4 md:px-6 max-w-7xl mx-auto"
@@ -109,11 +125,15 @@ export default function ClassesSection() {
           </h2>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {classes.map((cls, i) => (
-              <article
+              <motion.article
                 key={i}
-                className="bg-stone-100 rounded-xl shadow hover:shadow-md transition overflow-hidden"
                 role="region"
                 aria-label={cls.title}
+                className="bg-stone-100 rounded-xl overflow-hidden cursor-pointer"
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+                variants={cardVariants}
               >
                 <img
                   src={cls.image}
@@ -123,12 +143,15 @@ export default function ClassesSection() {
                   decoding="async"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-primary">
+                  <motion.h3
+                    className="text-xl font-semibold mb-2 text-primary"
+                    variants={titleVariants}
+                  >
                     {cls.title}
-                  </h3>
+                  </motion.h3>
                   <p className="text-gray-600 text-sm">{cls.desc}</p>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>
