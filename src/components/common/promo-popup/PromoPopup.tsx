@@ -1,25 +1,40 @@
 'use client';
 
 import Image from 'next/image';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent } from '@/components/ui/dialog';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 export default function PromoPopup() {
+
   const [open, setOpen] = useState(false);
 
+  const EXPIRY_DAYS = 1;
+
   useEffect(() => {
-    const hasSeenPromo = localStorage.getItem('seenPromoPopup');
-
-    if (!hasSeenPromo) {
-      const timeout = setTimeout(() => {
-        setOpen(true);
-        localStorage.setItem('seenPromoPopup', 'true');
-      }, 1000);
-
-      return () => clearTimeout(timeout);
+    const stored = localStorage.getItem('seenPromoPopup');
+    const now = Date.now();
+  
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      const expiresAt = parsed.expiresAt;
+  
+      if (now < expiresAt) {
+        return; // Still within cooldown period
+      }
     }
+  
+    const timeout = setTimeout(() => {
+      setOpen(true);
+      localStorage.setItem(
+        'seenPromoPopup',
+        JSON.stringify({ expiresAt: now + EXPIRY_DAYS * 24 * 60 * 60 * 1000 })
+      );
+    }, 1000);
+  
+    return () => clearTimeout(timeout);
   }, []);
 
   const handleClose = () => setOpen(false);
@@ -29,6 +44,9 @@ export default function PromoPopup() {
       <AnimatePresence>
         {open && (
           <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-0 shadow-none">
+            <DialogClose className="absolute top-4 right-4 z-10 bg-white text-black rounded-full p-2 shadow-md hover:bg-gray-200 transition">
+                <X className="w-4 h-4" />
+            </DialogClose>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
