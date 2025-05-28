@@ -1,54 +1,103 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeIn, staggerContainer, textVariant } from '@/utils/motion';
 
 export default function HomeSection() {
   return (
     <section className="bg-stone-100 text-gray-800" role="main">
-      {/* Hero Section */}
-      <header className="relative w-full h-[90vh] bg-gradient-to-br from-stone-100 via-white to-stone-200 flex items-center justify-center text-center overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-1/2 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+      {/* Header Section */}
+      <header className="relative w-full h-[90vh] bg-gradient-to-br from-stone-100 via-white to-stone-200 flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 md:px-8">
+        {/* Animated Background Blobs */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.3, scale: 1 }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+          className="absolute top-[-4rem] left-[-4rem] w-48 h-48 sm:w-64 sm:h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30"
+        ></motion.div>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.3, scale: 1 }}
+          transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+          className="absolute top-[-4rem] right-[-4rem] w-48 h-48 sm:w-64 sm:h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30"
+        ></motion.div>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.3, scale: 1 }}
+          transition={{ duration: 2, delay: 1, ease: "easeInOut" }}
+          className="absolute bottom-[-4rem] left-1/2 transform -translate-x-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30"
+        ></motion.div>
 
-        <div className="relative z-10 px-6 max-w-3xl">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight drop-shadow">
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="relative z-10 px-4 sm:px-6 max-w-xl sm:max-w-3xl"
+        >
+          <motion.h1 
+            variants={textVariant(0.4)}
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight drop-shadow"
+          >
             Welcome to <span className="text-primary">Ashu Yoga Studio</span>
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-xl mx-auto">
-            Experience authentic <strong>yoga classes</strong> designed for your mental peace, body strength, and spiritual balance.
-            Whether you're a beginner or advanced yogi, Ashu Yoga helps you find your inner center.
-          </p>
-          <div className="mt-8">
+          </motion.h1>
+          <motion.p 
+            variants={textVariant(0.6)}
+            className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-xl mx-auto"
+          >
+            Experience authentic <strong>yoga classes</strong> designed for your mental peace, body strength, and spiritual balance. Whether you're a beginner or advanced yogi, Ashu Yoga helps you find your inner center.
+          </motion.p>
+          <motion.div 
+            variants={textVariant(0.8)}
+            className="mt-6 sm:mt-8"
+          >
             <Link
               href="/classes"
-              className="inline-block bg-primary text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-primary/90 transition bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium"
+              className="inline-block bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:from-red-500 hover:via-red-600 hover:to-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 shadow-lg hover:shadow-xl"
             >
               Explore Yoga Classes
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </header>
-
       {/* About Snippet */}
-      <section className="py-16 text-center max-w-3xl mx-auto px-6">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-16 text-center max-w-3xl mx-auto px-6"
+      >
         <h2 className="text-3xl font-bold">Why Choose Ashu Yoga?</h2>
         <p className="mt-4 text-gray-600 text-lg">
           At <strong>Ashu Yoga Studio</strong>, we blend ancient yogic wisdom with modern wellness practices to offer a nurturing
           sanctuary for your body, mind, and soul. Discover a lifestyle of mindfulness, strength, and serenity.
         </p>
-      </section>
+      </motion.section>
 
       {/* Benefits Section */}
       <section className="py-16 bg-white px-6">
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <h3 className="text-3xl font-semibold">Benefits of Practicing Yoga</h3>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
             Unlock holistic wellness and vitality through yoga. These core benefits support mental health, body flexibility,
             and emotional resilience.
           </p>
-        </div>
-        <div className="grid gap-10 md:grid-cols-3 max-w-6xl mx-auto text-left">
+        </motion.div>
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid gap-10 md:grid-cols-3 max-w-6xl mx-auto text-left"
+        >
           {[
             {
               title: 'Improve Flexibility',
@@ -66,24 +115,41 @@ export default function HomeSection() {
               icon: '💪',
             },
           ].map((b, i) => (
-            <article key={i} className="bg-stone-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <motion.article 
+              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
+              key={i} 
+              className="bg-stone-100 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+              whileHover={{ scale: 1.03 }}
+            >
               <div className="text-4xl mb-4" aria-hidden>{b.icon}</div>
               <h4 className="text-xl font-semibold mb-2">{b.title}</h4>
               <p className="text-gray-600">{b.desc}</p>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Featured Classes */}
       <section className="py-16 pt-0 bg-white px-6" id="classes">
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <h3 className="text-3xl font-semibold">Featured Yoga Classes</h3>
           <p className="mt-2 text-gray-600">
             Explore our most popular yoga sessions — crafted for energy, balance, and healing.
           </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        </motion.div>
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
           {[
             {
               title: 'Morning Flow',
@@ -97,83 +163,145 @@ export default function HomeSection() {
             },
             {
               title: 'Yin & Restore',
-              desc: 'Slow-paced, deep-stretching poses to relax fascia and activate your body’s natural healing response.',
+              desc: 'Slow-paced, deep-stretching poses to relax fascia and activate your body\'s natural healing response.',
               img: '/images/home3.jpg',
             },
           ].map((cls, i) => (
-            <article key={i} className="bg-stone-100 rounded-lg overflow-hidden shadow-md">
-              <img src={cls.img} alt={cls.title} className="w-full h-100 object-cover" loading="lazy" />
+            <motion.article 
+              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
+              key={i} 
+              className="bg-stone-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+              whileHover={{ y: -10 }}
+            >
+              <motion.img 
+                src={cls.img} 
+                alt={cls.title} 
+                className="w-full h-100 object-cover" 
+                loading="lazy"
+                initial={{ opacity: 0.9 }}
+                whileHover={{ scale: 1.05, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
               <div className="p-6">
                 <h4 className="text-xl font-semibold mb-2">{cls.title}</h4>
                 <p className="text-gray-600 text-sm">{cls.desc}</p>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Instructor Snippet */}
-      <section className="py-16 text-center bg-stone-200 px-6" id="instructors">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-16 text-center bg-stone-200 px-6" 
+        id="instructors"
+      >
         <h3 className="text-3xl font-bold mb-6">Meet Our Certified Yoga Instructors</h3>
         <p className="max-w-xl mx-auto text-gray-600 mb-10">
           Our passionate teachers bring over a decade of experience in hatha, vinyasa, and mindfulness practices.
           With compassionate guidance and deep-rooted knowledge, they help you grow both on and off the mat.
         </p>
-        <Link
-          href="/teachers"
-          className="inline-block text-primary font-semibold hover:underline text-lg"
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Meet the Team →
-        </Link>
-      </section>
+          <Link
+            href="/teachers"
+            className="inline-block text-primary font-semibold hover:underline text-lg transition-all duration-300"
+          >
+            Meet the Team →
+          </Link>
+        </motion.div>
+      </motion.section>
 
       {/* Testimonials */}
       <section className="py-16 bg-white px-6 text-center" id="testimonials">
-        <h3 className="text-3xl font-semibold mb-10">What Our Yoga Students Say</h3>
-        <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto text-left">
+        <motion.h3 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-semibold mb-10"
+        >
+          What Our Yoga Students Say
+        </motion.h3>
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto text-left"
+        >
           {[
             {
-              quote:
-                "Ashu Yoga has completely transformed how I deal with stress. I feel mentally strong and emotionally lighter.",
+              quote: "Ashu Yoga has completely transformed how I deal with stress. I feel mentally strong and emotionally lighter.",
               name: 'Anjali R.',
             },
             {
-              quote:
-                "My flexibility and posture have improved so much! The instructors are supportive and genuinely care.",
+              quote: "My flexibility and posture have improved so much! The instructors are supportive and genuinely care.",
               name: 'Michael D.',
             },
             {
-              quote:
-                "Every session here feels like a sacred reset. I always leave with peace in my heart and a clear mind.",
+              quote: "Every session here feels like a sacred reset. I always leave with peace in my heart and a clear mind.",
               name: 'Sophie K.',
             },
           ].map((t, i) => (
-            <blockquote key={i} className="bg-stone-100 p-6 rounded-lg shadow">
+            <motion.blockquote 
+              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
+              key={i} 
+              className="bg-stone-100 p-6 rounded-lg shadow hover:bg-primary/10 transition-all duration-500"
+              whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
+            >
               <p className="text-gray-700 italic">“{t.quote}”</p>
               <footer className="mt-4 font-medium text-primary">{t.name}</footer>
-            </blockquote>
+            </motion.blockquote>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Yoga Philosophy */}
-      <section className="py-16 bg-white px-6 text-center" id="philosophy">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-16 bg-white px-6 text-center" 
+        id="philosophy"
+      >
         <div className="max-w-4xl mx-auto">
           <h3 className="text-3xl font-semibold mb-6">Our Yoga Philosophy</h3>
           <p className="text-gray-600 text-lg">
-            At <strong>Ashu Yoga</strong>, we believe that yoga is not just exercise — it’s a sacred path of transformation.
-            Our philosophy is rooted in the traditional teachings of Patanjali’s Yoga Sutras, and we infuse every class
+            At <strong>Ashu Yoga</strong>, we believe that yoga is not just exercise — it's a sacred path of transformation.
+            Our philosophy is rooted in the traditional teachings of Patanjali's Yoga Sutras, and we infuse every class
             with intention, breath awareness, and compassion.
             <br /><br />
             Yoga is a way of life — a means to balance your mind, body, and spirit through regular practice, mindfulness, and self-discovery.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Upcoming Events */}
       <section className="py-16 bg-stone-200 px-6 text-center" id="events">
-        <h3 className="text-3xl font-semibold mb-6">Upcoming Yoga Events & Wellness Retreats</h3>
-        <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+        <motion.h3 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-semibold mb-6"
+        >
+          Upcoming Yoga Events & Wellness Retreats
+        </motion.h3>
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto"
+        >
           {[
             {
               title: 'Sunrise Beach Yoga',
@@ -191,110 +319,204 @@ export default function HomeSection() {
               desc: 'Align with lunar energy through guided meditation, sound healing, and breathwork.',
             },
           ].map((event, i) => (
-            <article key={i} className="bg-white p-6 rounded-lg shadow-md text-left">
+            <motion.article 
+              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
+              key={i} 
+              className="bg-white p-6 rounded-lg shadow-md text-left hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+            >
               <h4 className="text-xl font-semibold">{event.title}</h4>
               <p className="text-sm text-gray-500 mb-2">{event.date}</p>
               <p className="text-gray-600">{event.desc}</p>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-white px-6 text-center" id="newsletter">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-16 bg-white px-6 text-center" 
+        id="newsletter"
+      >
         <div className="max-w-xl mx-auto">
           <h3 className="text-3xl font-semibold mb-4">Join Our Yoga Community</h3>
           <p className="text-gray-600 mb-6">
             Sign up for our newsletter to receive <strong>free yoga tips</strong>, upcoming events, and member-only wellness offers.
           </p>
-          <form className="flex flex-col sm:flex-row gap-4 justify-center">
-            <input
+          <motion.form 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            whileHover={{ scale: 1.02 }}
+          >
+            <motion.input
               type="email"
               placeholder="Enter your email address"
-              className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary w-full sm:w-auto"
               aria-label="Email address"
+              whileFocus={{ scale: 1.05, boxShadow: '0 0 0 2px rgba(239, 68, 68, 0.5)' }}
             />
-            <button
+            <motion.button
               type="submit"
-              className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition"
+              className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Subscribe
-            </button>
-          </form>
+            </motion.button>
+          </motion.form>
         </div>
-      </section>
+      </motion.section>
 
       {/* Instagram Gallery Preview */}
       <section className="py-16 bg-stone-100 px-6 text-center" id="gallery">
-        <h3 className="text-3xl font-semibold mb-6">Follow Us on Instagram</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <motion.h3 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-semibold mb-6"
+        >
+          Follow Us on Instagram
+        </motion.h3>
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto"
+        >
           {[1, 2, 3, 4].map((i) => (
-            <div key={i}>
+            <motion.div 
+              variants={fadeIn('up', 'spring', i * 0.1, 0.8)}
+              key={i}
+              whileHover={{ scale: 1.05 }}
+            >
               <img
                 src={`/images/instagram${i}.jpg`}
                 alt={`Ashu Yoga Instagram photo ${i}`}
-                className="rounded-lg w-full h-40 object-cover shadow-sm hover:shadow-lg transition"
+                className="rounded-lg w-full h-40 object-cover shadow-sm hover:shadow-lg transition-all duration-300"
                 loading="lazy"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Our Partners */}
-      <section className="py-16 bg-white px-6 text-center" id="partners">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-16 bg-white px-6 text-center" 
+        id="partners"
+      >
         <h3 className="text-3xl font-semibold mb-6">Our Trusted Wellness Partners</h3>
-        <div className="flex flex-wrap justify-center gap-8">
+        <motion.div 
+          className="flex flex-wrap justify-center gap-8"
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           {['lululemon', 'manduka', 'calm', 'headspace'].map((brand, i) => (
-            <img
+            <motion.img
+              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
               key={i}
               src={`/images/partner${i + 1}.jpg`}
               alt={`${brand} yoga partnership`}
-              className="h-40 opacity-70 hover:opacity-100 transition"
+              className="h-40 opacity-70 hover:opacity-100 transition-all duration-500 hover:scale-110"
               loading="lazy"
             />
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* FAQ Snippet */}
-      <section className="py-16 bg-stone-100 text-center px-6" id="faqs">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-16 bg-stone-100 text-center px-6" 
+        id="faqs"
+      >
         <h3 className="text-3xl font-semibold mb-6">Frequently Asked Questions (FAQs)</h3>
-        <div className="max-w-3xl mx-auto text-left space-y-6">
-          <div>
-            <h4 className="text-lg font-medium text-primary">Do I need yoga experience to join?</h4>
-            <p className="text-gray-600">
-              Not at all! Our yoga studio welcomes all levels — from complete beginners to experienced practitioners.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-lg font-medium text-primary">What should I bring to a yoga class?</h4>
-            <p className="text-gray-600">
-              Bring a yoga mat, water bottle, and wear comfortable clothing. We also provide mats and props in-studio.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-lg font-medium text-primary">Are online yoga classes available?</h4>
-            <p className="text-gray-600">
-              Yes! Many of our yoga classes are offered in both studio and live-streamed formats for your convenience.
-            </p>
-          </div>
-        </div>
-      </section>
+        <motion.div 
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-left space-y-6"
+        >
+          {[
+            {
+              question: 'Do I need yoga experience to join?',
+              answer: 'Not at all! Our yoga studio welcomes all levels — from complete beginners to experienced practitioners.',
+            },
+            {
+              question: 'What should I bring to a yoga class?',
+              answer: 'Bring a yoga mat, water bottle, and wear comfortable clothing. We also provide mats and props in-studio.',
+            },
+            {
+              question: 'Are online yoga classes available?',
+              answer: 'Yes! Many of our yoga classes are offered in both studio and live-streamed formats for your convenience.',
+            },
+          ].map((faq, i) => (
+            <motion.div 
+              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
+              key={i}
+              className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-all duration-300"
+            >
+              <h4 className="text-lg font-medium text-primary">{faq.question}</h4>
+              <p className="text-gray-600 mt-2">{faq.answer}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-900 text-white text-center px-6" id="cta">
-        <h3 className="text-3xl font-bold">Ready to begin your yoga journey?</h3>
-        <p className="mt-4 text-lg max-w-xl mx-auto">
-          Sign up now for a <strong>free trial yoga class</strong> and experience the Ashu Yoga difference.
-        </p>
-        <Link
-          href="/contact"
-          className="mt-8 inline-block bg-white text-primary px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition"
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-20 bg-gray-900 text-white text-center px-6" 
+        id="cta"
+      >
+        <motion.h3 
+          className="text-3xl font-bold"
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          Book a Free Class
-        </Link>
-      </section>
+          Ready to begin your yoga journey?
+        </motion.h3>
+        <motion.p 
+          className="mt-4 text-lg max-w-xl mx-auto"
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Sign up now for a <strong>free trial yoga class</strong> and experience the Ashu Yoga difference.
+        </motion.p>
+        <motion.div
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8"
+        >
+          <Link
+            href="/contact"
+            className="inline-block bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            Book a Free Class
+          </Link>
+        </motion.div>
+      </motion.section>
     </section>
   );
 }
