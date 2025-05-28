@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import TopSection from '@/components/common/top-section/TopSection';
 
 const plans = [
@@ -21,6 +24,19 @@ const plans = [
   },
 ];
 
+const cardVariants = {
+  offscreen: { opacity: 0, y: 40 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      bounce: 0.3,
+      duration: 0.7,
+    },
+  },
+};
+
 export default function PricingSection() {
   return (
     <>
@@ -42,17 +58,27 @@ export default function PricingSection() {
 
             <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-3">
               {plans.map(({ title, price, features, popular }, i) => (
-                <article
+                <motion.article
                   key={i}
                   className={`
                     relative flex flex-col rounded-3xl border 
-                    p-8 shadow-lg transition-transform duration-300
-                    hover:scale-105
+                    p-8 shadow-lg cursor-pointer
                     ${popular ? 'border-primary bg-primary/5 shadow-primary/30' : 'border-gray-200 bg-white'}
                   `}
+                  initial="offscreen"
+                  whileInView="onscreen"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={cardVariants}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: popular
+                      ? '0 20px 40px rgba(99, 102, 241, 0.4)'
+                      : '0 20px 40px rgba(156, 163, 175, 0.4)',
+                    transition: { duration: 0.3, ease: 'easeInOut' },
+                  }}
                 >
                   {popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold uppercase rounded-full px-3 py-1 shadow-md">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold uppercase rounded-full px-3 py-1 shadow-md select-none">
                       Most Popular
                     </div>
                   )}
@@ -78,7 +104,8 @@ export default function PricingSection() {
                   </ul>
                   <button
                     className={`
-                      rounded-full py-3 text-lg font-semibold transition-colors
+                      rounded-full py-3 text-lg font-semibold transition-colors duration-300
+                      focus:outline-none focus:ring-4 focus:ring-primary/40
                       ${
                         popular
                           ? 'bg-primary text-white hover:bg-primary/90'
@@ -88,7 +115,7 @@ export default function PricingSection() {
                   >
                     Get Started
                   </button>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
