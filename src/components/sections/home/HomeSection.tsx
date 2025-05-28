@@ -120,7 +120,7 @@ export default function HomeSection() {
           With compassionate guidance and deep-rooted knowledge, they help you grow both on and off the mat.
         </p>
         <Link
-          href="/team"
+          href="/teachers"
           className="inline-block text-primary font-semibold hover:underline text-lg"
         >
           Meet the Team →
