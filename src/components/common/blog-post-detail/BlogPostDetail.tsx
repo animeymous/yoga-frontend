@@ -22,9 +22,9 @@ export default function BlogPostDetail({
   });
 
   return (
-    <main>
+    <main className="bg-gray-100 pb-20 pt-20">
       <article
-        className="mb-20 max-w-4xl mx-auto px-6 py-16 bg-white rounded-xl shadow-md"
+        className="pb-20 max-w-4xl mx-auto px-6 py-16 bg-white rounded-xl shadow-md"
         itemScope
         itemType="https://schema.org/BlogPosting"
         aria-labelledby="blog-post-title"
