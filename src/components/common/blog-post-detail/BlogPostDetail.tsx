@@ -22,7 +22,7 @@ export default function BlogPostDetail({
   });
 
   return (
-    <main className="bg-gray-100 pb-20 pt-20">
+    <main className="bg-gray-100 pb-20 pt-0 sm:pt-20">
       <article
         className="pb-20 max-w-4xl mx-auto px-6 py-16 bg-white rounded-xl shadow-md"
         itemScope
