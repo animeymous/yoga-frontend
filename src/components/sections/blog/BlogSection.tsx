@@ -1,29 +1,6 @@
 import TopSection from "@/components/common/top-section/TopSection";
 import Link from "next/link";
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "5 Morning Yoga Routines for a Productive Day",
-    summary: "Start your day with energy and intention through these morning flows designed to boost clarity and focus.",
-    image: "/images/blog1.jpg",
-    slug: "/blog/morning-yoga",
-  },
-  {
-    id: 2,
-    title: "The Science Behind Mindful Breathing",
-    summary: "Explore how breathwork enhances mental clarity, reduces stress, and supports emotional balance.",
-    image: "/images/blog2.jpg",
-    slug: "/blog/mindful-breathing",
-  },
-  {
-    id: 3,
-    title: "How to Create a Home Meditation Space",
-    summary: "Learn to design a calming meditation zone at home that promotes daily mindfulness and inner peace.",
-    image: "/images/blog3.jpg",
-    slug: "/blog/home-meditation",
-  },
-];
+import blogPosts from "@/constants/blogPosts";
 
 export default function BlogSection() {
   return (
@@ -67,11 +44,12 @@ export default function BlogSection() {
                 </h2>
                 <p className="text-gray-600 text-sm mb-4">{post.summary}</p>
                 <Link
-                  href={post.slug}
+                  href={`/blog/${post.slug}`}
                   className="text-primary font-medium hover:underline"
                 >
                   Read more →
                 </Link>
+
               </div>
             </article>
           ))}
