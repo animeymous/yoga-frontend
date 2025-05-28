@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -10,138 +10,156 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
-  firstname: z.string().min(2, { message: 'First name must be at least 2 characters.' }),
-  lastname: z.string().min(2, { message: 'Last name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  firstname: z.string().min(2, { message: "First name must be at least 2 characters." }),
+  lastname: z.string().min(2, { message: "Last name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z
     .string()
-    .min(7, { message: 'Phone number must be at least 7 digits.' })
-    .max(15, { message: 'Phone number must be less than 15 digits.' })
-    .regex(/^\+?[0-9\s\-()]+$/, { message: 'Phone number contains invalid characters.' }),
-  subject: z.string().min(3, { message: 'Subject must be at least 3 characters.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+    .min(7, { message: "Phone number must be at least 7 digits." })
+    .max(15, { message: "Phone number must be less than 15 digits." })
+    .regex(/^\+?[0-9\s\-()]+$/, { message: "Phone number contains invalid characters." }),
+  subject: z.string().min(3, { message: "Subject must be at least 3 characters." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
 type ContactFormValues = z.infer<typeof formSchema>;
+
+const inputFocusVariants = {
+  focused: { borderColor: "#ef4444", boxShadow: "0 0 8px rgba(239, 68, 68, 0.5)" }, // primary red glow
+  unfocused: { borderColor: "#d1d5db", boxShadow: "none" }, // gray border, no shadow
+};
+
+const buttonVariants = {
+  idle: { scale: 1, boxShadow: "none" },
+  hover: {
+    scale: 1.05,
+    boxShadow: "0 8px 15px rgba(239, 68, 68, 0.6)",
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+  tap: { scale: 0.95 },
+};
 
 export default function ContactForm() {
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstname: '',
-      lastname: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
     },
   });
 
   const onSubmit = (values: ContactFormValues) => {
-    console.log('Form Submitted:', values);
+    console.log("Form Submitted:", values);
     // Handle actual form submission here
   };
 
   return (
-    <div className="contact-us-form-wrap bg-white p-8 shadow-xl rounded-2xl">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
+      className="contact-us-form-wrap bg-white p-8 shadow-xl rounded-2xl"
+      aria-labelledby="contact-form-heading"
+    >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" noValidate>
+          <h2 id="contact-form-heading" className="sr-only">
+            Contact Us Form
+          </h2>
+
           {/* Name Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="firstname"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="John"
-                      {...field}
-                      className="rounded-xl border-gray-300 focus:ring-primary"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="lastname"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Last Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Doe"
-                      {...field}
-                      className="rounded-xl border-gray-300 focus:ring-primary"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {["firstname", "lastname"].map((field) => (
+              <FormField
+                key={field}
+                control={form.control}
+                name={field as keyof ContactFormValues}
+                render={({ field: formField, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="capitalize">{field.replace(/^\w/, (c) => c.toUpperCase())}</FormLabel>
+                    <FormControl>
+                      <motion.input
+                        {...formField}
+                        placeholder={field === "firstname" ? "John" : "Doe"}
+                        className="rounded-xl border border-gray-300 px-4 py-2 w-full focus:outline-none"
+                        initial="unfocused"
+                        animate={formField.value ? "focused" : "unfocused"}
+                        variants={inputFocusVariants}
+                        onFocus={() => formField.onChange(formField.value)} // trigger animate on focus
+                        onBlur={() => formField.onChange(formField.value)}  // trigger animate on blur
+                        aria-invalid={fieldState.error ? "true" : "false"}
+                        aria-describedby={`${field}-error`}
+                      />
+                    </FormControl>
+                    <FormMessage id={`${field}-error`} />
+                  </FormItem>
+                )}
+              />
+            ))}
           </div>
 
           {/* Email & Phone */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="email@example.com"
-                      {...field}
-                      className="rounded-xl border-gray-300 focus:ring-primary"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="+1 234 567 890"
-                      {...field}
-                      className="rounded-xl border-gray-300 focus:ring-primary"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {["email", "phone"].map((field) => (
+              <FormField
+                key={field}
+                control={form.control}
+                name={field as keyof ContactFormValues}
+                render={({ field: formField, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="capitalize">{field}</FormLabel>
+                    <FormControl>
+                      <motion.input
+                        {...formField}
+                        placeholder={field === "email" ? "email@example.com" : "+1 234 567 890"}
+                        className="rounded-xl border border-gray-300 px-4 py-2 w-full focus:outline-none"
+                        initial="unfocused"
+                        animate={formField.value ? "focused" : "unfocused"}
+                        variants={inputFocusVariants}
+                        onFocus={() => formField.onChange(formField.value)}
+                        onBlur={() => formField.onChange(formField.value)}
+                        aria-invalid={fieldState.error ? "true" : "false"}
+                        aria-describedby={`${field}-error`}
+                      />
+                    </FormControl>
+                    <FormMessage id={`${field}-error`} />
+                  </FormItem>
+                )}
+              />
+            ))}
           </div>
 
           {/* Subject */}
           <FormField
             control={form.control}
             name="subject"
-            render={({ field }) => (
+            render={({ field: formField, fieldState }) => (
               <FormItem>
                 <FormLabel>Subject</FormLabel>
                 <FormControl>
-                  <Input
+                  <motion.input
+                    {...formField}
                     placeholder="Your subject"
-                    {...field}
-                    className="rounded-xl border-gray-300 focus:ring-primary"
+                    className="rounded-xl border border-gray-300 px-4 py-2 w-full focus:outline-none"
+                    initial="unfocused"
+                    animate={formField.value ? "focused" : "unfocused"}
+                    variants={inputFocusVariants}
+                    onFocus={() => formField.onChange(formField.value)}
+                    onBlur={() => formField.onChange(formField.value)}
+                    aria-invalid={fieldState.error ? "true" : "false"}
+                    aria-describedby="subject-error"
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage id="subject-error" />
               </FormItem>
             )}
           />
@@ -150,30 +168,45 @@ export default function ContactForm() {
           <FormField
             control={form.control}
             name="message"
-            render={({ field }) => (
+            render={({ field: formField, fieldState }) => (
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <textarea
-                    {...field}
+                  <motion.textarea
+                    {...formField}
                     rows={5}
                     placeholder="How can we help you?"
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 resize-none focus:outline-none"
+                    initial="unfocused"
+                    animate={formField.value ? "focused" : "unfocused"}
+                    variants={inputFocusVariants}
+                    onFocus={() => formField.onChange(formField.value)}
+                    onBlur={() => formField.onChange(formField.value)}
+                    aria-invalid={fieldState.error ? "true" : "false"}
+                    aria-describedby="message-error"
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage id="message-error" />
               </FormItem>
             )}
           />
 
-          <Button
-            type="submit"
-            className="w-full md:w-auto bg-gray-900 text-white hover:bg-primary/90 rounded-xl px-6 py-3 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg"
+          <motion.div
+            initial="idle"
+            whileHover="hover"
+            whileTap="tap"
+            className="flex justify-center"
           >
-            Submit
-          </Button>
+            <Button
+              type="submit"
+              className="w-full md:w-auto bg-gradient-to-r from-red-400 via-red-500 to-red-600 text-white rounded-xl px-6 py-3 font-medium focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 hover:bg-gradient-to-br"
+              aria-label="Submit contact form"
+            >
+              Submit
+            </Button>
+          </motion.div>
         </form>
       </Form>
-    </div>
+    </motion.section>
   );
 }
