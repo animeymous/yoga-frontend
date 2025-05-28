@@ -95,7 +95,7 @@ export default function Footer() {
         {/* Embedded Google Map */}
         <section
           aria-label="Ashu Yoga Location on Map"
-          className="flex flex-col items-center rounded-lg shadow-lg border border-gray-700 max-w-full h-48 sm:h-56 md:h-64 lg:h-full bg-gray-110 p-4"
+          className="flex flex-col items-center rounded-lg shadow-lg border border-gray-700 max-w-full h-48 sm:h-56 md:h-64 lg:h-full bg-red-100 p-4"
         >
           <div className="flex items-center gap-2 mb-3 text-primary">
             <MapPin size={20} aria-hidden="true" />
