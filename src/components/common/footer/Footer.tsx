@@ -95,12 +95,12 @@ export default function Footer() {
         {/* Embedded Google Map */}
         <section
           aria-label="Ashu Yoga Location on Map"
-          className="flex flex-col items-center rounded-lg shadow-lg border border-gray-700 max-w-full h-48 sm:h-56 md:h-64 lg:h-full bg-gray-100 p-4"
+          className="flex flex-col items-center rounded-lg shadow-lg max-w-full h-48 sm:h-56 md:h-64 lg:h-full"
         >
-          <div className="flex items-center gap-2 mb-3 text-primary">
+          {/* <div className="flex items-center gap-2 mb-3 text-primary">
             <MapPin size={20} aria-hidden="true" />
             <span className="font-semibold text-lg">Our Location</span>
-          </div>
+          </div> */}
 
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6901.532241718599!2d78.31887669565491!3d30.129505228842618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3909164570544ae1%3A0x7562c62aae0fcb6c!2sTapovan%2C%20Rishikesh%2C%20Uttarakhand%20249192!5e0!3m2!1sen!2sin!4v1748429605660!5m2!1sen!2sin"

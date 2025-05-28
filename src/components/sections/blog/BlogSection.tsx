@@ -4,6 +4,7 @@ import TopSection from "@/components/common/top-section/TopSection";
 import Link from "next/link";
 import blogPosts from "@/constants/blogPosts";
 import { motion } from "framer-motion";
+import PromoPopup from "@/components/common/promo-popup/PromoPopup";
 
 const cardVariants = {
   offscreen: { opacity: 0, y: 50 },
@@ -17,6 +18,7 @@ const cardVariants = {
 export default function BlogSection() {
   return (
     <>
+      <PromoPopup />
       <TopSection
         url="/images/blog4.jpg"
         heading1="Our Yoga Blog"
