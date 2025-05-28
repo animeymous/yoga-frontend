@@ -1,16 +1,15 @@
-// app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import BlogPostDetail from "@/components/common/blog-post-detail/BlogPostDetail";
 import blogPosts from "@/constants/blogPosts";
 
 type Props = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 };
 
-export default function BlogPostPage({ params }: Props) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;  // <-- await params here
+
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) return notFound();
 
