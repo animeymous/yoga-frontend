@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn, staggerContainer, textVariant } from '@/utils/motion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogPortal } from "@/components/ui/dialog";
 import { useEffect, useState } from 'react';
+import YogaMessageSection from '../yoga-message/YogaMessageSection';
 
 export default function HomeSection() {
   const [showDiscount, setShowDiscount] = useState(false);
@@ -161,6 +162,9 @@ export default function HomeSection() {
           sanctuary for your body, mind, and soul. Discover a lifestyle of mindfulness, strength, and serenity.
         </p>
       </motion.section>
+
+      {/* Yoga Message Section */}
+      <YogaMessageSection />
 
       {/* Benefits Section */}
       <section className="py-16 bg-white px-6">
