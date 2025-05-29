@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import YogaMessageSection from '../yoga-message/YogaMessageSection';
 import YogaCertificateSection from '../yoga-certificate/YogaCertificateSection';
 import TestimonialSection from '../testimonials/TestimonialSection';
+import YogaTeacherTrainingSection from '../yoga-ttc/YogaTeacherTrainingSection';
 
 export default function HomeSection() {
   const [showDiscount, setShowDiscount] = useState(false);
@@ -150,6 +151,7 @@ export default function HomeSection() {
           </motion.div>
         </motion.div>
       </header>
+      
       {/* About Snippet */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }}
@@ -170,6 +172,9 @@ export default function HomeSection() {
 
       {/* Yoga Certificate Section */}
       <YogaCertificateSection />
+
+      {/* Yoga Teacher Training Section */}
+      <YogaTeacherTrainingSection />
 
       {/* Benefits Section */}
       <section className="py-16 bg-white px-6">
