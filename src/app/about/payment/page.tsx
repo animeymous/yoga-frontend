@@ -100,7 +100,7 @@ export default function PaymentPage() {
     <article className="bg-gradient-to-b from-green-50 to-white min-h-screen">
       {/* Hero Section */}
       <section className="relative py-16 bg-gradient-to-r from-green-600 to-teal-600">
-        <div className="absolute inset-0 bg-grid-white/10" />
+        <div className="absolute inset-0 bg-white/5" />
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -136,13 +136,13 @@ export default function PaymentPage() {
               <motion.div
                 key={plan.title}
                 variants={fadeIn('up', 'spring', index * 0.2, 0.8)}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
               >
                 <div className="bg-gradient-to-r from-green-500 to-teal-500 p-6 text-white text-center">
                   <h3 className="text-2xl font-bold mb-2">{plan.title}</h3>
                   <p className="opacity-90">{plan.duration}</p>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-6 text-center">
                     <div className="mb-4">
                       <p className="text-sm text-gray-600 mb-1">Shared Accommodation</p>
@@ -153,7 +153,7 @@ export default function PaymentPage() {
                       <p className="text-3xl font-bold text-gray-900">${plan.price.private}</p>
                     </div>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 flex-grow">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
