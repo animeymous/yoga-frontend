@@ -106,6 +106,43 @@ export default function YogaCertificateSection() {
           </motion.div>
         </motion.div>
 
+        {/* Yoga Postures Banner Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative -mx-4 sm:-mx-6 lg:-mx-8 my-24"
+        >
+          <div className="relative h-[200px] sm:h-[300px] md:h-[400px] overflow-hidden">
+            <Image
+              src="/images/yoga10.jpg"
+              alt="Various yoga postures and asanas demonstrating the diversity of yoga practice"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+            <div className="absolute inset-0 flex items-center justify-center text-center px-4 backdrop-blur-sm bg-black/20">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="max-w-4xl mx-auto bg-black/40 p-6 sm:p-8 rounded-xl backdrop-blur-md"
+              >
+                <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 tracking-wide [text-shadow:_2px_2px_4px_rgb(0_0_0_/_50%)]">
+                  Master the Art of Yoga
+                </h3>
+                <p className="text-lg md:text-xl text-white font-medium max-w-2xl mx-auto [text-shadow:_1px_1px_2px_rgb(0_0_0_/_50%)]">
+                  From beginner poses to advanced asanas, learn the authentic techniques from experienced instructors
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Certificates Showcase */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certificates.map((cert, index) => (
