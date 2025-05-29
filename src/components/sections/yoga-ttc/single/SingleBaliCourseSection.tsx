@@ -122,6 +122,66 @@ export default function SingleBaliCourseSection({ course }: Props) {
               </div>
             </motion.section>
 
+            {/* Why Choose Us */}
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl shadow-lg p-8"
+            >
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">Why Choose Our Bali Program</h2>
+              <div className="grid gap-6">
+                {[
+                  {
+                    title: "Paradise Location",
+                    description: "Practice yoga in a tropical paradise surrounded by lush rice terraces, pristine beaches, and Balinese spiritual energy.",
+                    icon: "🌴"
+                  },
+                  {
+                    title: "Cultural Immersion",
+                    description: "Experience authentic Balinese culture, traditional ceremonies, and local wisdom while deepening your yoga practice.",
+                    icon: "🏺"
+                  },
+                  {
+                    title: "Expert International Faculty",
+                    description: "Learn from highly experienced international yoga teachers who blend modern teaching methods with traditional wisdom.",
+                    icon: "👨‍🏫"
+                  },
+                  {
+                    title: "Holistic Approach",
+                    description: "Our program integrates physical practice, meditation, philosophy, and healing arts in a balanced curriculum.",
+                    icon: "🧘‍♀️"
+                  },
+                  {
+                    title: "Modern Facilities",
+                    description: "Train in our state-of-the-art yoga shalas with ocean views, equipped with all necessary props and amenities.",
+                    icon: "🏢"
+                  },
+                  {
+                    title: "Small Group Size",
+                    description: "We maintain intimate class sizes to ensure personalized attention and optimal learning environment.",
+                    icon: "👥"
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex gap-4 bg-stone-50 p-6 rounded-xl"
+                  >
+                    <div className="text-4xl" role="img" aria-label={item.title}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.section>
+
             {/* Curriculum */}
             <motion.section
               initial={{ opacity: 0 }}

@@ -130,6 +130,67 @@ export default function SingleRishikeshCourseSection({ course }: Props) {
               </div>
             </motion.section>
 
+            {/* Why Choose Us with Sacred Elements */}
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-mandala opacity-5 transform rotate-45" />
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">Why Choose Our Rishikesh Program</h2>
+              <div className="grid gap-6">
+                {[
+                  {
+                    title: "Birthplace of Yoga",
+                    description: "Study in Rishikesh, the world capital of yoga, where ancient wisdom flows with the sacred Ganges River.",
+                    icon: "🕉️"
+                  },
+                  {
+                    title: "Traditional Lineage",
+                    description: "Learn authentic yoga directly from Indian masters who carry forward centuries-old yogic traditions.",
+                    icon: "🙏"
+                  },
+                  {
+                    title: "Spiritual Environment",
+                    description: "Immerse yourself in a deeply spiritual atmosphere with daily meditation, mantras, and sacred ceremonies.",
+                    icon: "✨"
+                  },
+                  {
+                    title: "Vedic Philosophy",
+                    description: "Gain profound insights into Vedic philosophy, Sanskrit, and the spiritual dimensions of yoga.",
+                    icon: "📚"
+                  },
+                  {
+                    title: "Ashram Living",
+                    description: "Experience traditional ashram lifestyle with authentic yogic routines and sattvic environment.",
+                    icon: "🏛️"
+                  },
+                  {
+                    title: "Sacred Practices",
+                    description: "Participate in sacred rituals, Ganga aarti, and traditional practices passed down through generations.",
+                    icon: "🪔"
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex gap-4 bg-orange-50 p-6 rounded-xl"
+                  >
+                    <div className="text-4xl" role="img" aria-label={item.title}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.section>
+
             {/* Curriculum with Traditional Elements */}
             <motion.section
               initial={{ opacity: 0 }}
