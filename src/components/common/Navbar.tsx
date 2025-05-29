@@ -29,9 +29,36 @@ import Image from "next/image";
 // Define your links
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
   { label: "Blog", href: "/blog" },
+];
+
+const aboutLinks = [
+  { 
+    title: "Ashu Yoga Ashram", 
+    href: "/about/ashram", 
+    description: "Discover our spiritual sanctuary and yoga training center." 
+  },
+  { 
+    title: "Food & Accommodation", 
+    href: "/about/facilities", 
+    description: "Experience comfortable stay with nutritious yogic food." 
+  },
+  { 
+    title: "Photo Gallery", 
+    href: "/about/gallery", 
+    description: "Visual journey through our ashram and activities." 
+  },
+  { 
+    title: "Course Payment", 
+    href: "/about/payment", 
+    description: "Secure and flexible payment options for courses." 
+  },
+  { 
+    title: "FAQ", 
+    href: "/about/faq", 
+    description: "Find answers to common questions about our programs." 
+  }
 ];
 
 const moreLinks = [
@@ -86,13 +113,22 @@ export default function Navbar() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              {/* About Us */}
-              <NavigationMenuItem key="/about">
-                <NavigationMenuLink asChild>
-                  <Link href="/about" className={navigationMenuTriggerStyle()}>
-                    About Us
-                  </Link>
-                </NavigationMenuLink>
+              {/* Replace About Us with About Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>About</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    {aboutLinks.map((item) => (
+                      <ListItem
+                        key={item.title}
+                        title={item.title}
+                        href={item.href}
+                      >
+                        {item.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               {/* Courses Menu inserted right after About Us */}
@@ -238,17 +274,20 @@ export default function Navbar() {
             </Link>
           ))}
           <hr />
-          {moreLinks.map(({ title, href }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setIsOpen(false)}
-              className="text-gray-700 hover:text-primary"
-              role="menuitem"
-            >
-              {title}
-            </Link>
-          ))}
+          <p className="text-gray-500 font-semibold">About</p>
+          <div className="pl-4 flex flex-col gap-2">
+            {aboutLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="text-gray-700 hover:text-primary"
+                role="menuitem"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
           <hr />
           <p className="text-gray-500 font-semibold">Courses</p>
           <div className="pl-4 flex flex-col gap-2">
