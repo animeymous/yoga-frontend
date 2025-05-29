@@ -6,6 +6,7 @@ import { fadeIn, staggerContainer, textVariant } from '@/utils/motion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogPortal } from "@/components/ui/dialog";
 import { useEffect, useState } from 'react';
 import YogaMessageSection from '../yoga-message/YogaMessageSection';
+import YogaCertificateSection from '../yoga-certificate/YogaCertificateSection';
 
 export default function HomeSection() {
   const [showDiscount, setShowDiscount] = useState(false);
@@ -165,6 +166,9 @@ export default function HomeSection() {
 
       {/* Yoga Message Section */}
       <YogaMessageSection />
+
+      {/* Yoga Certificate Section */}
+      <YogaCertificateSection />
 
       {/* Benefits Section */}
       <section className="py-16 bg-white px-6">

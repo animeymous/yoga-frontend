@@ -46,7 +46,7 @@ export default function YogaMessageSection() {
             transition={{ duration: 0.3 }}
           >
             <Image
-              src="/images/blog1.jpg"
+              src="/images/yogaMessage1.jpg"
               alt="Peaceful yoga meditation scene with a person meditating in lotus pose during sunrise"
               fill
               className="object-cover"
