@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/menubar";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
 
 // Define your links
 const navLinks = [
@@ -127,92 +128,87 @@ export default function Navbar() {
                         {item.description}
                       </ListItem>
                     ))}
+                    <div className="md:col-span-2">
+                      <Separator className="my-2" />
+                      <div className="grid md:grid-cols-2 gap-3 mt-3">
+                        {moreLinks.map((item) => (
+                          <ListItem
+                            key={item.title}
+                            title={item.title}
+                            href={item.href}
+                          >
+                            {item.description}
+                          </ListItem>
+                        ))}
+                      </div>
+                    </div>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
               {/* Courses Menu inserted right after About Us */}
-              <Menubar className="bg-transparent border-0 shadow-none p-0">
-                <MenubarMenu>
-                  <MenubarTrigger className="cursor-pointer font-medium text-sm px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-0">
-                    Yoga Courses
-                  </MenubarTrigger>
-                  <MenubarContent align="start" forceMount>
-                    <MenubarSub>
-                      <MenubarSubTrigger>Rishikesh</MenubarSubTrigger>
-                      <MenubarSubContent>
-                        <MenubarItem>
-                          <Link href="/courses/india/rishikesh/1" className="block w-full" aria-label="100 Hour Yoga Teacher Training in Rishikesh">
-                            100 Hour Yoga Teacher Training
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Yoga Courses</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[400px] p-4">
+                    <div className="grid gap-3">
+                      {/* Rishikesh */}
+                      <div>
+                        <h4 className="text-sm font-medium leading-none mb-3 text-gray-500">Rishikesh</h4>
+                        <div className="grid gap-2">
+                          <Link href="/courses/india/rishikesh/1" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
+                            100 Hour Yoga Teacher Training - Rishikesh
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/india/rishikesh/2" className="block w-full" aria-label="200 Hour Yoga Teacher Training in Rishikesh">
-                            200 Hour Yoga Teacher Training
+                          <Link href="/courses/india/rishikesh/2" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
+                            200 Hour Yoga Teacher Training - Rishikesh
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/india/rishikesh/3" className="block w-full" aria-label="300 Hour Yoga Teacher Training in Rishikesh">
-                            300 Hour Yoga Teacher Training
+                          <Link href="/courses/india/rishikesh/3" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
+                            300 Hour Yoga Teacher Training - Rishikesh
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/india/rishikesh/4" className="block w-full" aria-label="500 Hour Yoga Teacher Training in Rishikesh">
-                            500 Hour Yoga Teacher Training
+                          <Link href="/courses/india/rishikesh/4" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
+                            500 Hour Yoga Teacher Training - Rishikesh
                           </Link>
-                        </MenubarItem>
-                      </MenubarSubContent>
-                    </MenubarSub>
+                        </div>
+                      </div>
 
-                    <MenubarSub>
-                      <MenubarSubTrigger>Bali</MenubarSubTrigger>
-                      <MenubarSubContent>
-                        <MenubarItem>
-                          <Link href="/courses/bali/1" className="block w-full" aria-label="100 Hour Yoga Teacher Training in Bali">
+                      {/* Bali */}
+                      <div>
+                        <h4 className="text-sm font-medium leading-none mb-3 text-gray-500">Bali</h4>
+                        <div className="grid gap-2">
+                          <Link href="/courses/bali/1" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             100 Hour Yoga Teacher Training - Bali
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/bali/2" className="block w-full" aria-label="200 Hour Yoga Teacher Training in Bali">
+                          <Link href="/courses/bali/2" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             200 Hour Yoga Teacher Training - Bali
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/bali/3" className="block w-full" aria-label="300 Hour Yoga Teacher Training in Bali">
+                          <Link href="/courses/bali/3" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             300 Hour Yoga Teacher Training - Bali
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/bali/4" className="block w-full" aria-label="500 Hour Yoga Teacher Training in Bali">
+                          <Link href="/courses/bali/4" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             500 Hour Yoga Teacher Training - Bali
                           </Link>
-                        </MenubarItem>
-                      </MenubarSubContent>
-                    </MenubarSub>
+                        </div>
+                      </div>
 
-                    <MenubarSub>
-                      <MenubarSubTrigger>Goa</MenubarSubTrigger>
-                      <MenubarSubContent>
-                        <MenubarItem>
-                          <Link href="/courses/india/goa/1" className="block w-full" aria-label="100 Hour Yoga Teacher Training in Goa">
+                      {/* Goa */}
+                      <div>
+                        <h4 className="text-sm font-medium leading-none mb-3 text-gray-500">Goa</h4>
+                        <div className="grid gap-2">
+                          <Link href="/courses/india/goa/1" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             100 Hour Yoga Teacher Training - Goa
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/india/goa/2" className="block w-full" aria-label="200 Hour Yoga Teacher Training in Goa">
+                          <Link href="/courses/india/goa/2" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             200 Hour Yoga Teacher Training - Goa
                           </Link>
-                        </MenubarItem>
-                        <MenubarItem>
-                          <Link href="/courses/india/goa/3" className="block w-full" aria-label="300 Hour Yoga Teacher Training in Goa">
+                          <Link href="/courses/india/goa/3" className="block text-sm leading-none no-underline outline-none select-none rounded-sm px-2 py-1.5 hover:bg-accent hover:text-accent-foreground">
                             300 Hour Yoga Teacher Training - Goa
                           </Link>
-                        </MenubarItem>
-                      </MenubarSubContent>
-                    </MenubarSub>
-                  </MenubarContent>
-                </MenubarMenu>
-              </Menubar>
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
               {/* Contact Us */}
               <NavigationMenuItem key="/contact">
@@ -232,23 +228,6 @@ export default function Navbar() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              {/* More Dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>More</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] md:grid-cols-2">
-                    {moreLinks.map((item) => (
-                      <ListItem
-                        key={item.title}
-                        title={item.title}
-                        href={item.href}
-                      >
-                        {item.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -293,16 +272,16 @@ export default function Navbar() {
           <div className="pl-4 flex flex-col gap-2">
             <p className="text-gray-600 font-medium">Rishikesh</p>
             <Link href="/courses/india/rishikesh/1" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
-              100 Hour Yoga Teacher Training
+              100 Hour Yoga Teacher Training - Rishikesh
             </Link>
             <Link href="/courses/india/rishikesh/2" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
-              200 Hour Yoga Teacher Training
+              200 Hour Yoga Teacher Training - Rishikesh
             </Link>
             <Link href="/courses/india/rishikesh/3" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
-              300 Hour Yoga Teacher Training
+              300 Hour Yoga Teacher Training - Rishikesh
             </Link>
             <Link href="/courses/india/rishikesh/4" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
-              500 Hour Yoga Teacher Training
+              500 Hour Yoga Teacher Training - Rishikesh
             </Link>
           </div>
           <div className="pl-4 flex flex-col gap-2">
