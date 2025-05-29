@@ -1,12 +1,98 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn, staggerContainer, textVariant } from '@/utils/motion';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogPortal } from "@/components/ui/dialog";
+import { useEffect, useState } from 'react';
 
 export default function HomeSection() {
+  const [showDiscount, setShowDiscount] = useState(false);
+
+  useEffect(() => {
+    // Initial delay of 1 second before showing
+    const showTimer = setTimeout(() => {
+      setShowDiscount(true);
+    }, 1000);
+
+    // Hide after 5 seconds
+    const hideTimer = setTimeout(() => {
+      setShowDiscount(false);
+    }, 6000); // 1s initial delay + 5s show time
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
   return (
     <section className="bg-stone-100 text-gray-800" role="main">
+      {/* Special Discount Dialog */}
+      <AnimatePresence>
+        {showDiscount && (
+          <motion.div
+            role="alert"
+            aria-label="Special discount offer for Indian students"
+            initial={{ opacity: 0, y: -20, x: 20 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed top-20 right-4 w-[90%] sm:w-80 bg-gradient-to-r from-white to-stone-50 p-5 rounded-lg shadow-lg border border-primary/10 z-50 backdrop-blur-sm"
+          >
+            <motion.button 
+              onClick={() => setShowDiscount(false)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Close discount notification"
+            >
+              ×
+            </motion.button>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl" role="img" aria-label="celebration emoji">🎉</span>
+                <div>
+                  <h3 className="text-primary font-semibold text-lg mb-1">
+                    Exclusive Student Offer!
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    <strong className="text-primary/90">30% OFF</strong> for Indian students with valid ID
+                  </p>
+                  <motion.div 
+                    className="mt-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Link
+                      href="/contact"
+                      className="inline-block text-sm bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 rounded-full transition-colors"
+                      onClick={() => setShowDiscount(false)}
+                    >
+                      Claim Now →
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Progress bar */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-1 bg-primary/20 rounded-full"
+              initial={{ width: "100%" }}
+              animate={{ width: "0%" }}
+              transition={{ duration: 5, ease: "linear" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header Section */}
       <header className="relative w-full h-[90vh] bg-gradient-to-br from-stone-100 via-white to-stone-200 flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 md:px-8">
         {/* Animated Background Blobs */}
