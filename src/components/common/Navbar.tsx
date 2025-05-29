@@ -46,7 +46,12 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 px-4 py-3">
+    <nav 
+      lang="en"
+      itemScope 
+      itemType="https://schema.org/SiteNavigationElement"
+      className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 px-4 py-3"
+    >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2" aria-label="Ashu Yoga Home">
           <Image
