@@ -55,11 +55,7 @@ export default function Navbar() {
       {/* Skip to main content link */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4
-          inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-base font-medium 
-          hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 
-          focus:ring-4 focus:outline-none focus:ring-gray-600
-          shadow-lg hover:shadow-xl"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:outline-none focus:ring-gray-600 shadow-lg hover:shadow-xl"
       >
         Skip to main content
       </a>
@@ -83,20 +79,20 @@ export default function Navbar() {
 
               {/* Home */}
               <NavigationMenuItem key="/">
-                <Link href="/" passHref legacyBehavior>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink asChild>
+                  <Link href="/" className={navigationMenuTriggerStyle()}>
                     Home
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* About Us */}
               <NavigationMenuItem key="/about">
-                <Link href="/about" passHref legacyBehavior>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink asChild>
+                  <Link href="/about" className={navigationMenuTriggerStyle()}>
                     About Us
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* Courses Menu inserted right after About Us */}
@@ -164,20 +160,20 @@ export default function Navbar() {
 
               {/* Contact Us */}
               <NavigationMenuItem key="/contact">
-                <Link href="/contact" passHref legacyBehavior>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink asChild>
+                  <Link href="/contact" className={navigationMenuTriggerStyle()}>
                     Contact Us
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* Blog */}
               <NavigationMenuItem key="/blog">
-                <Link href="/blog" passHref legacyBehavior>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink asChild>
+                  <Link href="/blog" className={navigationMenuTriggerStyle()}>
                     Blog
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* More Dropdown */}
