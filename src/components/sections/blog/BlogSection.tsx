@@ -89,7 +89,7 @@ export default function BlogSection() {
                           viewport={{ once: true, amount: 0.3 }}
                           variants={cardVariants}
                         >
-                          <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                          <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 pt-0">
                             <div className="relative h-full overflow-hidden">
                               <img
                                 src={post.image}
