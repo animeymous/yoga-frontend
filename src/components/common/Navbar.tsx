@@ -106,18 +106,23 @@ export default function Navbar() {
                       <MenubarSubTrigger>Rishikesh</MenubarSubTrigger>
                       <MenubarSubContent>
                         <MenubarItem>
-                          <Link href="/courses/rishikesh/yoga-basics" className="block w-full" aria-label="Yoga Basics Course in Rishikesh">
-                            Yoga Basics
+                          <Link href="/courses/1" className="block w-full" aria-label="100 Hour Yoga Teacher Training in Rishikesh">
+                            100 Hour Yoga Teacher Training
                           </Link>
                         </MenubarItem>
                         <MenubarItem>
-                          <Link href="/courses/rishikesh/advanced-practice" className="block w-full" aria-label="Advanced Practice Course in Rishikesh">
-                            Advanced Practice
+                          <Link href="/courses/2" className="block w-full" aria-label="200 Hour Yoga Teacher Training in Rishikesh">
+                            200 Hour Yoga Teacher Training
                           </Link>
                         </MenubarItem>
                         <MenubarItem>
-                          <Link href="/courses/rishikesh/meditation" className="block w-full" aria-label="Meditation Course in Rishikesh">
-                            Meditation
+                          <Link href="/courses/3" className="block w-full" aria-label="300 Hour Yoga Teacher Training in Rishikesh">
+                            300 Hour Yoga Teacher Training
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <Link href="/courses/4" className="block w-full" aria-label="500 Hour Yoga Teacher Training in Rishikesh">
+                            500 Hour Yoga Teacher Training
                           </Link>
                         </MenubarItem>
                       </MenubarSubContent>
@@ -231,9 +236,21 @@ export default function Navbar() {
           ))}
           <hr />
           <p className="text-gray-500 font-semibold">Courses</p>
-          <Link href="/courses/rishikesh" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary" role="menuitem">
-            Rishikesh
-          </Link>
+          <div className="pl-4 flex flex-col gap-2">
+            <p className="text-gray-600 font-medium">Rishikesh</p>
+            <Link href="/courses/1" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              100 Hour Yoga Teacher Training
+            </Link>
+            <Link href="/courses/2" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              200 Hour Yoga Teacher Training
+            </Link>
+            <Link href="/courses/3" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              300 Hour Yoga Teacher Training
+            </Link>
+            <Link href="/courses/4" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              500 Hour Yoga Teacher Training
+            </Link>
+          </div>
           <Link href="/courses/bali" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary" role="menuitem">
             Bali
           </Link>
