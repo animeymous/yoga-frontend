@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import SingleYogaTeacherTrainingSection from '@/components/sections/yoga-ttc/single/SingleYogaTeacherTrainingSection';
+import SingleRishikeshCourseSection from '@/components/sections/yoga-ttc/single/SingleRishikeshCourseSection';
 import { courseData } from '@/data/courseData';
 import { notFound } from 'next/navigation';
 
@@ -15,5 +15,5 @@ export default function RishikeshCoursePage() {
     notFound();
   }
 
-  return <SingleYogaTeacherTrainingSection course={course} />;
+  return <SingleRishikeshCourseSection course={course} />;
 } 
