@@ -132,9 +132,9 @@ export default function Navbar() {
               </NavigationMenuItem>
 
               {/* Courses Menu inserted right after About Us */}
-              <Menubar>
+              <Menubar className="bg-transparent border-0 shadow-none p-0">
                 <MenubarMenu>
-                  <MenubarTrigger className="cursor-pointer font-medium text-sm px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground border-0 focus:outline-none focus:ring-0">
+                  <MenubarTrigger className="cursor-pointer font-medium text-sm px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-0">
                     Yoga Courses
                   </MenubarTrigger>
                   <MenubarContent align="start" forceMount>
