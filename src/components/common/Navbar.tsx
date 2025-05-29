@@ -132,13 +132,23 @@ export default function Navbar() {
                       <MenubarSubTrigger>Bali</MenubarSubTrigger>
                       <MenubarSubContent>
                         <MenubarItem>
-                          <Link href="/courses/bali/surf-yoga" className="block w-full" aria-label="Surf Yoga Course in Bali">
-                            Surf Yoga
+                          <Link href="/courses/bali/1" className="block w-full" aria-label="100 Hour Yoga Teacher Training in Bali">
+                            100 Hour Yoga Teacher Training - Bali
                           </Link>
                         </MenubarItem>
                         <MenubarItem>
-                          <Link href="/courses/bali/spiritual-retreat" className="block w-full" aria-label="Spiritual Retreat Course in Bali">
-                            Spiritual Retreat
+                          <Link href="/courses/bali/2" className="block w-full" aria-label="200 Hour Yoga Teacher Training in Bali">
+                            200 Hour Yoga Teacher Training - Bali
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <Link href="/courses/bali/3" className="block w-full" aria-label="300 Hour Yoga Teacher Training in Bali">
+                            300 Hour Yoga Teacher Training - Bali
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <Link href="/courses/bali/4" className="block w-full" aria-label="500 Hour Yoga Teacher Training in Bali">
+                            500 Hour Yoga Teacher Training - Bali
                           </Link>
                         </MenubarItem>
                       </MenubarSubContent>
@@ -251,9 +261,21 @@ export default function Navbar() {
               500 Hour Yoga Teacher Training
             </Link>
           </div>
-          <Link href="/courses/bali" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary" role="menuitem">
-            Bali
-          </Link>
+          <div className="pl-4 flex flex-col gap-2">
+            <p className="text-gray-600 font-medium">Bali</p>
+            <Link href="/courses/bali/1" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              100 Hour Yoga Teacher Training - Bali
+            </Link>
+            <Link href="/courses/bali/2" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              200 Hour Yoga Teacher Training - Bali
+            </Link>
+            <Link href="/courses/bali/3" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              300 Hour Yoga Teacher Training - Bali
+            </Link>
+            <Link href="/courses/bali/4" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary pl-2" role="menuitem">
+              500 Hour Yoga Teacher Training - Bali
+            </Link>
+          </div>
           <Link href="/courses/goa" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary" role="menuitem">
             Goa
           </Link>
