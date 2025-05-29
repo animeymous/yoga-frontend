@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardContent, CardDescription } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
+import FaqSection from '@/components/sections/faq/FaqSection';
 
 const paymentMethods = [
   {
@@ -220,7 +221,7 @@ export default function PaymentPage() {
         </motion.section>
 
         {/* Payment Policy - Enhanced shadcn/ui design */}
-        <motion.section
+        {/* <motion.section
           variants={staggerContainer(0.1, 0.2)}
           initial="hidden"
           whileInView="show"
@@ -335,7 +336,8 @@ export default function PaymentPage() {
               </div>
             </CardContent>
           </Card>
-        </motion.section>
+        </motion.section> */}
+        <FaqSection />
 
         {/* Contact CTA - Using shadcn Button for interaction */}
         <motion.section
