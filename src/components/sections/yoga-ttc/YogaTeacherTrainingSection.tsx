@@ -154,7 +154,7 @@ export default function YogaTeacherTrainingSection() {
 
                   <div className="flex gap-4">
                     <Link
-                      href={`/courses/${course.id}`}
+                      href={`/courses/india/rishikesh/${course.id}`}
                       className="flex-1 bg-primary/10 text-primary hover:bg-primary/20 py-2 px-4 rounded-lg text-center transition-colors"
                     >
                       Course Details
