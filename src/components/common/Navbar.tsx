@@ -52,6 +52,18 @@ export default function Navbar() {
       itemType="https://schema.org/SiteNavigationElement"
       className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 px-4 py-3"
     >
+      {/* Skip to main content link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4
+          inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-base font-medium 
+          hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 
+          focus:ring-4 focus:outline-none focus:ring-gray-600
+          shadow-lg hover:shadow-xl"
+      >
+        Skip to main content
+      </a>
+
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2" aria-label="Ashu Yoga Home">
           <Image
