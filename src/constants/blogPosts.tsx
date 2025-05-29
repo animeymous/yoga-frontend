@@ -9,6 +9,7 @@ const blogPosts = [
       slug: "morning-yoga",
       publishedDate: "2024-04-01",
       author: "Ashu Yoga",
+      category: "Yoga Practice",
       content: (
         <>
           <p>
@@ -33,6 +34,7 @@ const blogPosts = [
       slug: "mindful-breathing",
       publishedDate: "2024-05-10",
       author: "Ashu Yoga",
+      category: "Meditation",
       content: (
         <>
           <p>
@@ -56,6 +58,7 @@ const blogPosts = [
       slug: "home-meditation",
       publishedDate: "2024-06-15",
       author: "Ashu Yoga",
+      category: "Lifestyle",
       content: (
         <>
           <p>
