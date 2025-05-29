@@ -158,13 +158,18 @@ export default function Navbar() {
                       <MenubarSubTrigger>Goa</MenubarSubTrigger>
                       <MenubarSubContent>
                         <MenubarItem>
-                          <Link href="/courses/goa/beach-yoga" className="block w-full" aria-label="Beach Yoga Course in Goa">
-                            Beach Yoga
+                          <Link href="/courses/india/goa/1" className="block w-full" aria-label="100 Hour Yoga Teacher Training in Goa">
+                            100 Hour Yoga Teacher Training - Goa
                           </Link>
                         </MenubarItem>
                         <MenubarItem>
-                          <Link href="/courses/goa/night-meditation" className="block w-full" aria-label="Night Meditation Course in Goa">
-                            Night Meditation
+                          <Link href="/courses/india/goa/2" className="block w-full" aria-label="200 Hour Yoga Teacher Training in Goa">
+                            200 Hour Yoga Teacher Training - Goa
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <Link href="/courses/india/goa/3" className="block w-full" aria-label="300 Hour Yoga Teacher Training in Goa">
+                            300 Hour Yoga Teacher Training - Goa
                           </Link>
                         </MenubarItem>
                       </MenubarSubContent>
@@ -276,9 +281,18 @@ export default function Navbar() {
               500 Hour Yoga Teacher Training - Bali
             </Link>
           </div>
-          <Link href="/courses/goa" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-primary" role="menuitem">
-            Goa
-          </Link>
+          <div className="pl-4 flex flex-col gap-2">
+            <p className="text-gray-600 font-medium">Goa</p>
+            <Link href="/courses/india/goa/1" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-blue-500 pl-2" role="menuitem">
+              100 Hour Yoga Teacher Training - Goa
+            </Link>
+            <Link href="/courses/india/goa/2" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-blue-500 pl-2" role="menuitem">
+              200 Hour Yoga Teacher Training - Goa
+            </Link>
+            <Link href="/courses/india/goa/3" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-blue-500 pl-2" role="menuitem">
+              300 Hour Yoga Teacher Training - Goa
+            </Link>
+          </div>
         </div>
       )}
     </nav>
