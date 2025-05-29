@@ -1,12 +1,102 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn, staggerContainer, textVariant } from '@/utils/motion';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogPortal } from "@/components/ui/dialog";
+import { useEffect, useState } from 'react';
+import YogaMessageSection from '../yoga-message/YogaMessageSection';
+import YogaCertificateSection from '../yoga-certificate/YogaCertificateSection';
+import TestimonialSection from '../testimonials/TestimonialSection';
+import YogaTeacherTrainingSection from '../yoga-ttc/YogaTeacherTrainingSection';
 
 export default function HomeSection() {
+  const [showDiscount, setShowDiscount] = useState(false);
+
+  useEffect(() => {
+    // Initial delay of 1 second before showing
+    const showTimer = setTimeout(() => {
+      setShowDiscount(true);
+    }, 1000);
+
+    // Hide after 5 seconds
+    const hideTimer = setTimeout(() => {
+      setShowDiscount(false);
+    }, 6000); // 1s initial delay + 5s show time
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
   return (
     <section className="bg-stone-100 text-gray-800" role="main">
+      {/* Special Discount Dialog */}
+      <AnimatePresence>
+        {showDiscount && (
+          <motion.div
+            role="alert"
+            aria-label="Special discount offer for Indian students"
+            initial={{ opacity: 0, y: -20, x: 20 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed top-20 right-4 w-[90%] sm:w-80 bg-gradient-to-r from-white to-stone-50 p-5 rounded-lg shadow-lg border border-primary/10 z-50 backdrop-blur-sm"
+          >
+            <motion.button 
+              onClick={() => setShowDiscount(false)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Close discount notification"
+            >
+              ×
+            </motion.button>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl" role="img" aria-label="celebration emoji">🎉</span>
+                <div>
+                  <h3 className="text-primary font-semibold text-lg mb-1">
+                    Exclusive Student Offer!
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    <strong className="text-primary/90">30% OFF</strong> for Indian students with valid ID
+                  </p>
+                  <motion.div 
+                    className="mt-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Link
+                      href="/contact"
+                      className="inline-block text-sm bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 rounded-full transition-colors"
+                      onClick={() => setShowDiscount(false)}
+                    >
+                      Claim Now →
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Progress bar */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-1 bg-primary/20 rounded-full"
+              initial={{ width: "100%" }}
+              animate={{ width: "0%" }}
+              transition={{ duration: 5, ease: "linear" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header Section */}
       <header className="relative w-full h-[90vh] bg-gradient-to-br from-stone-100 via-white to-stone-200 flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 md:px-8">
         {/* Animated Background Blobs */}
@@ -61,6 +151,7 @@ export default function HomeSection() {
           </motion.div>
         </motion.div>
       </header>
+      
       {/* About Snippet */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }}
@@ -75,6 +166,15 @@ export default function HomeSection() {
           sanctuary for your body, mind, and soul. Discover a lifestyle of mindfulness, strength, and serenity.
         </p>
       </motion.section>
+
+      {/* Yoga Message Section */}
+      <YogaMessageSection />
+
+      {/* Yoga Certificate Section */}
+      <YogaCertificateSection />
+
+      {/* Yoga Teacher Training Section */}
+      <YogaTeacherTrainingSection />
 
       {/* Benefits Section */}
       <section className="py-16 bg-white px-6">
@@ -129,139 +229,8 @@ export default function HomeSection() {
         </motion.div>
       </section>
 
-      {/* Featured Classes */}
-      <section className="py-16 pt-0 bg-white px-6" id="classes">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h3 className="text-3xl font-semibold">Featured Yoga Classes</h3>
-          <p className="mt-2 text-gray-600">
-            Explore our most popular yoga sessions — crafted for energy, balance, and healing.
-          </p>
-        </motion.div>
-        <motion.div 
-          variants={staggerContainer(0.1, 0.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-        >
-          {[
-            {
-              title: 'Morning Flow',
-              desc: 'Begin your day with gentle sun salutations and energizing breathwork to awaken body and mind.',
-              img: '/images/home1.jpg',
-            },
-            {
-              title: 'Power Yoga',
-              desc: 'Challenge yourself with this dynamic vinyasa practice that builds heat, endurance, and strength.',
-              img: '/images/home2.jpg',
-            },
-            {
-              title: 'Yin & Restore',
-              desc: 'Slow-paced, deep-stretching poses to relax fascia and activate your body\'s natural healing response.',
-              img: '/images/home3.jpg',
-            },
-          ].map((cls, i) => (
-            <motion.article 
-              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
-              key={i} 
-              className="bg-stone-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-              whileHover={{ y: -10 }}
-            >
-              <motion.img 
-                src={cls.img} 
-                alt={cls.title} 
-                className="w-full h-100 object-cover" 
-                loading="lazy"
-                initial={{ opacity: 0.9 }}
-                whileHover={{ scale: 1.05, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              />
-              <div className="p-6">
-                <h4 className="text-xl font-semibold mb-2">{cls.title}</h4>
-                <p className="text-gray-600 text-sm">{cls.desc}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Instructor Snippet */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-16 text-center bg-stone-200 px-6" 
-        id="instructors"
-      >
-        <h3 className="text-3xl font-bold mb-6">Meet Our Certified Yoga Instructors</h3>
-        <p className="max-w-xl mx-auto text-gray-600 mb-10">
-          Our passionate teachers bring over a decade of experience in hatha, vinyasa, and mindfulness practices.
-          With compassionate guidance and deep-rooted knowledge, they help you grow both on and off the mat.
-        </p>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Link
-            href="/teachers"
-            className="inline-block text-primary font-semibold hover:underline text-lg transition-all duration-300"
-          >
-            Meet the Team →
-          </Link>
-        </motion.div>
-      </motion.section>
-
       {/* Testimonials */}
-      <section className="py-16 bg-white px-6 text-center" id="testimonials">
-        <motion.h3 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl font-semibold mb-10"
-        >
-          What Our Yoga Students Say
-        </motion.h3>
-        <motion.div 
-          variants={staggerContainer(0.1, 0.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto text-left"
-        >
-          {[
-            {
-              quote: "Ashu Yoga has completely transformed how I deal with stress. I feel mentally strong and emotionally lighter.",
-              name: 'Anjali R.',
-            },
-            {
-              quote: "My flexibility and posture have improved so much! The instructors are supportive and genuinely care.",
-              name: 'Michael D.',
-            },
-            {
-              quote: "Every session here feels like a sacred reset. I always leave with peace in my heart and a clear mind.",
-              name: 'Sophie K.',
-            },
-          ].map((t, i) => (
-            <motion.blockquote 
-              variants={fadeIn('up', 'spring', i * 0.2, 0.8)}
-              key={i} 
-              className="bg-stone-100 p-6 rounded-lg shadow hover:bg-primary/10 transition-all duration-500"
-              whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
-            >
-              <p className="text-gray-700 italic">“{t.quote}”</p>
-              <footer className="mt-4 font-medium text-primary">{t.name}</footer>
-            </motion.blockquote>
-          ))}
-        </motion.div>
-      </section>
+      <TestimonialSection />
 
       {/* Yoga Philosophy */}
       <motion.section 
