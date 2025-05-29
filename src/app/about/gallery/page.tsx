@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Camera, School, Building2, Users } from 'lucide-react';
+import type { JSX } from 'react';
 
 // Using existing images to avoid build crashes
 const galleryImages = [
@@ -63,7 +64,7 @@ const categories = [
   { id: 'activities', label: 'Activities', icon: Users }
 ];
 
-export default function GalleryPage() {
+export default function GalleryPage(): JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
