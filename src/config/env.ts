@@ -16,9 +16,15 @@ const prodConfig: EnvConfig = {
   isProduction: true,
 };
 
-export const env: EnvConfig = 
-  process.env.NEXT_PUBLIC_ENV === 'production' ? prodConfig : devConfig;
+// export const env: EnvConfig = 
+//   process.env.NEXT_PUBLIC_ENV === 'production' ? prodConfig : devConfig;
+
+// config/env.ts or lib/api.ts
+
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:8080';
+const apiVersion = 'v1';
+
 
 export const getApiUrl = (endpoint: string): string => {
-  return `${env.apiBaseUrl}/api/${env.apiVersion}/${endpoint}`;
+  return `${apiBaseUrl}/api/${apiVersion}/${endpoint}`;
 }; 
