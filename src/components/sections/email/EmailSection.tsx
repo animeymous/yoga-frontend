@@ -29,7 +29,6 @@ export default function EmailSection() {
     try {
       setLoading(true);
       const response = await emailService.sendEmail({ email, message });
-      console.log(response);
 
       if (response.success) {
         toast.success('Email sent successfully!');
@@ -38,7 +37,6 @@ export default function EmailSection() {
         toast.error(response.message || 'Failed to send email.');
       }
     } catch (error) {
-      console.error('Send email error:', error);
       toast.error('An unexpected error occurred.');
     } finally {
       setLoading(false);
