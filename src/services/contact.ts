@@ -5,6 +5,7 @@ import type {
   ContactFormResponse,
   CourseEnquiryRequest,
   CourseEnquiryResponse,
+  Contact,
 } from '@/types/api';
 
 export const contactService = {
@@ -20,5 +21,9 @@ export const contactService = {
       'courses/enquiry',
       data
     );
+  },
+
+  getAllContacts: async () => {
+    return api.get<Contact[]>('contact');
   },
 }; 

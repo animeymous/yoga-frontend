@@ -43,6 +43,17 @@ export interface NewsletterSubscriptionRequest {
   preferences?: string[];
 }
 
+export interface Contact {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+
 export interface NewsletterSubscriptionResponse {
   subscriptionId: string;
   status: 'active' | 'pending';
