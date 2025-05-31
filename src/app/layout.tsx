@@ -5,6 +5,7 @@ import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/footer/Footer";
 import ChatBot from "@/components/chat/ChatBot";
 import { Cormorant_Garamond, Mulish } from 'next/font/google';
+import { Toaster } from 'sonner';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,7 @@ export default function RootLayout({
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
         <ChatBot />
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );
