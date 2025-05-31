@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { emailService } from '@/services/email';
 import { toast } from 'sonner';
 
 export default function EmailSection() {
@@ -21,27 +20,28 @@ export default function EmailSection() {
   }, []);
 
   const handleSubmit = async () => {
-    if (!email || !message) {
-      toast.error('Email and message are required.');
-      return;
-    }
-
+    setLoading(true);
     try {
-      setLoading(true);
-      const response = await emailService.sendEmail({ email, message });
-
-      if (response.success) {
-        toast.success('Email sent successfully!');
-        setMessage('');
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, message }),
+      });
+  
+      const data = await res.json();
+      if (res.ok) {
+        toast.success(data.message || "Thank you for your message! We'll get back to you soon.");
       } else {
-        toast.error(response.message || 'Failed to send email.');
+        toast.error(data.message || 'Failed to send email.');
       }
     } catch (error) {
-      toast.error('An unexpected error occurred.');
+      toast.error('Error sending email.');
     } finally {
       setLoading(false);
     }
   };
+  
+  
 
   return (
     <div className="max-w-md mx-auto mt-10 space-y-4">

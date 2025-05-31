@@ -4,14 +4,7 @@ import { getAdminUsername, getAdminPassword, getApiUrl } from '@/config/env';
 
 export const GET = async (req: NextRequest) => {
 
-  const username = process.env.ADMIN_USERNAME;
-  const password = process.env.ADMIN_PASSWORD;
-
-  console.log("process.env.ADMIN_USERNAME", process.env.ADMIN_USERNAME);
-  console.log("process.env.ADMIN_PASSWORD", process.env.ADMIN_PASSWORD);
-  console.log("getApiUrl('contact')", getApiUrl('contact'));
-
-  const auth = Buffer.from(`${username}:${password}`).toString('base64');
+  const auth = Buffer.from(`${getAdminUsername()}:${getAdminPassword()}`).toString('base64');
 
   const res = await fetch(`${getApiUrl('contact')}`, {
     headers: {

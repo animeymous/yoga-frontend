@@ -1,12 +1,16 @@
 // src/app/api/send-email/route.ts
 import { NextRequest } from 'next/server';
+import { getApiUrl, getAdminUsername, getAdminPassword } from '@/config/env';
 
 export async function POST(req: NextRequest) {
   try {
     const { email, message } = await req.json();
 
-    const backendURL = 'https://yoga-backend-9w5v.onrender.com/api/v1/email'; // or your deployed backend URL
-    const auth = Buffer.from('admin:admin123').toString('base64');
+    const username = process.env.ADMIN_USERNAME;
+    const password = process.env.ADMIN_PASSWORD;
+
+    const backendURL = `${getApiUrl('email')}`; // or your deployed backend URL
+    const auth = Buffer.from(`${getAdminUsername()}:${getAdminPassword()}`).toString('base64');
 
     const res = await fetch(backendURL, {
       method: 'POST',
