@@ -1,18 +1,17 @@
-// // app/send-email/page.tsx
+// app/send-email/page.tsx
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { emailService } from '@/services/email';
+import { toast } from 'sonner';
 
 export default function EmailSection() {
-  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState('');
 
   useEffect(() => {
     const storedEmail = sessionStorage.getItem('contact_email');
@@ -22,23 +21,25 @@ export default function EmailSection() {
   }, []);
 
   const handleSubmit = async () => {
-    setLoading(true);
-    setStatus('');
-    try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, message }),
-      });
+    if (!email || !message) {
+      toast.error('Email and message are required.');
+      return;
+    }
 
-      if (res.ok) {
-        setStatus('Email sent!');
+    try {
+      setLoading(true);
+      const response = await emailService.sendEmail({ email, message });
+      console.log(response);
+
+      if (response.success) {
+        toast.success('Email sent successfully!');
         setMessage('');
       } else {
-        setStatus('Failed to send email.');
+        toast.error(response.message || 'Failed to send email.');
       }
     } catch (error) {
-      setStatus('Error sending email.');
+      console.error('Send email error:', error);
+      toast.error('An unexpected error occurred.');
     } finally {
       setLoading(false);
     }
@@ -58,10 +59,9 @@ export default function EmailSection() {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <Button onClick={handleSubmit} disabled={loading || !email || !message}>
+      <Button onClick={handleSubmit} disabled={loading || !message}>
         {loading ? 'Sending...' : 'Send Email'}
       </Button>
-      {status && <p className="text-sm">{status}</p>}
     </div>
   );
 }

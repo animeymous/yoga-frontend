@@ -23,8 +23,18 @@ const prodConfig: EnvConfig = {
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:8080';
 const apiVersion = 'v1';
+const adminUsername = process.env.ADMIN_USERNAME!;
+const adminPassword = process.env.ADMIN_PASSWORD!;
 
 
 export const getApiUrl = (endpoint: string): string => {
   return `${apiBaseUrl}/api/${apiVersion}/${endpoint}`;
 }; 
+
+export const getAdminUsername = (): string => {
+  return adminUsername;
+};
+
+export const getAdminPassword = (): string => {
+  return adminPassword;
+};
