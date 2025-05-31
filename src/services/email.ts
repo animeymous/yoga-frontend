@@ -13,6 +13,7 @@ export const emailService = {
     const username = getAdminUsername();
     const password = getAdminPassword();
     const authHeader = `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`;
+    console.log(authHeader);
 
     return api.post<ApiResponse<string>>('email', data, {
       headers: {
