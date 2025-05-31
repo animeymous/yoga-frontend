@@ -9,12 +9,13 @@ export const GET = async (req: NextRequest) => {
 
   console.log("process.env.ADMIN_USERNAME", process.env.ADMIN_USERNAME);
   console.log("process.env.ADMIN_PASSWORD", process.env.ADMIN_PASSWORD);
+  console.log("getApiUrl('contact')", getApiUrl('contact'));
 
   const auth = Buffer.from(`${username}:${password}`).toString('base64');
 
-  const res = await fetch(`${getApiUrl}/api/v1/contact`, {
+  const res = await fetch(`${getApiUrl('contact')}`, {
     headers: {
-      Authorization: `Basic ${auth}`,
+      Authorization: `Basic ${auth}`
     },
   });
 
