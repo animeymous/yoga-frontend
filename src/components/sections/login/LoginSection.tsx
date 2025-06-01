@@ -17,9 +17,13 @@ export default function LoginSection() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const setCookie = (name: string, value: string, days: number) => {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure; SameSite=Strict`;
+  };
+
   const handleLogin = async () => {
     setLoading(true);
-
     try {
       const res = await fetch(`${getApiUrl('auth/login')}`, {
         method: 'POST',
@@ -28,10 +32,11 @@ export default function LoginSection() {
       });
 
       const data = await res.json();
-      console.log(data);
+
       if (res.ok) {
-        localStorage.setItem('token', data.token);
-        console.log(data.token);
+
+        setCookie('token', data.token, 1);
+
         router.push('/admin/contact');
       } else {
         alert(data.message || 'Login failed');
@@ -42,6 +47,7 @@ export default function LoginSection() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-slate-100 dark:from-slate-900 dark:to-black px-4">

@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
+import { getApiUrl } from '@/config/env';
 
 interface Contact {
   id: number;
@@ -23,9 +24,18 @@ export default function ContactListSection() {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const res = await fetch('/api/admin/contacts');
+        const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
+        const res = await fetch(`${getApiUrl('contact')}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
         const data = await res.json();
+
         setContacts(data);
+        
       } catch (error) {
         console.error('Failed to fetch contacts:', error);
       } finally {
