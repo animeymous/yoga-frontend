@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { getApiUrl } from '@/config/env';
 
 export default function EmailSection() {
   const [email, setEmail] = useState('');
@@ -22,9 +23,16 @@ export default function EmailSection() {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/send-email', {
+
+      const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+      console.log('token', token);
+
+      const res = await fetch(`${getApiUrl('contact/email')}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, message }),
       });
   
