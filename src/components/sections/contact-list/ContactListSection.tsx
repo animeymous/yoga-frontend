@@ -24,6 +24,13 @@ export default function ContactListSection() {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
+        const storedContacts = sessionStorage.getItem('contacts');
+        if (storedContacts) {
+          setContacts(JSON.parse(storedContacts));
+          setLoading(false);
+          return;
+        }
+
         const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
 
         const res = await fetch(`${getApiUrl('contact')}`, {
@@ -35,7 +42,7 @@ export default function ContactListSection() {
         const data = await res.json();
 
         setContacts(data);
-        
+        sessionStorage.setItem('contacts', JSON.stringify(data));
       } catch (error) {
         console.error('Failed to fetch contacts:', error);
       } finally {
