@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { getApiUrl } from '@/config/env';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function EmailSection() {
   const [email, setEmail] = useState('');
@@ -52,22 +53,36 @@ export default function EmailSection() {
   
 
   return (
-    <div className="max-w-md mx-auto mt-10 space-y-4">
-      <Input
-        type="email"
-        placeholder="Recipient Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        readOnly
-      />
-      <Textarea
-        placeholder="Message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <Button onClick={handleSubmit} disabled={loading || !message}>
-        {loading ? 'Sending...' : 'Send Email'}
-      </Button>
-    </div>
+    <Card className="max-w-md mx-auto mt-10 space-y-4">
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <label htmlFor="email" className="text-sm font-medium block">
+            Recipient Email
+          </label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="Recipient Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            readOnly
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="message" className="text-sm font-medium block">
+            Message
+          </label>
+          <Textarea
+            id="message"
+            placeholder="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </div>
+        <Button onClick={handleSubmit} disabled={loading || !message}>
+          {loading ? 'Sending...' : 'Send Email'}
+        </Button>
+      </CardContent>
+    </Card>
   );
 }
