@@ -62,18 +62,34 @@ export default function ContactListSection() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {contacts.map((contact) => (
-            <Card key={contact.id}
-            onClick={() => handleCardClick(contact.email)}
-            className="cursor-pointer hover:bg-gray-100 transition-colors"
+            <article
+              key={contact.id}
+              onClick={() => handleCardClick(contact.email)}
+              className="cursor-pointer rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
+              aria-label={`Contact from ${contact.firstname} ${contact.lastname}`}
+              style={{
+                backgroundColor: '#F5F5F0', // Light sage from theme
+                color: '#2C3639', // Deep gray from theme
+              }}
             >
               <CardContent className="space-y-2 p-4">
-                <p><strong>Name:</strong> {contact.firstname} {contact.lastname}</p>
-                <p><strong>Email:</strong> {contact.email}</p>
-                <p><strong>Phone:</strong> {contact.phone}</p>
-                <p><strong>Subject:</strong> {contact.subject}</p>
-                <p><strong>Message:</strong> {contact.message}</p>
+                <p>
+                  <strong>Name:</strong> {contact.firstname} {contact.lastname}
+                </p>
+                <p>
+                  <strong>Email:</strong> {contact.email}
+                </p>
+                <p>
+                  <strong>Phone:</strong> {contact.phone}
+                </p>
+                <p>
+                  <strong>Subject:</strong> {contact.subject}
+                </p>
+                <p>
+                  <strong>Message:</strong> {contact.message}
+                </p>
               </CardContent>
-            </Card>
+            </article>
           ))}
         </div>
       )}

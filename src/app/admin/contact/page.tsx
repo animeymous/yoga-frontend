@@ -3,6 +3,11 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getUserRoleFromToken } from '@/utils/auth';
 
+export const metadata = {
+  title: 'Admin Contact Submissions | My Yoga App',
+  description: 'View and manage contact submissions from users.',
+};
+
 export default async function ContactPage() {
   const cookieStore = await cookies();
   const token = cookieStore.get('token')?.value;
