@@ -6,6 +6,7 @@ import Footer from "@/components/common/footer/Footer";
 import ChatBot from "@/components/chat/ChatBot";
 import { Cormorant_Garamond, Mulish } from 'next/font/google';
 import { Toaster } from 'sonner';
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default function RootLayout({
         <Footer />
         <ChatBot />
         <Toaster richColors position="top-center" />
+        <Analytics />
       </body>
     </html>
   );
